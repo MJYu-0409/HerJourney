@@ -47,7 +47,7 @@ Page({
   data: {
     // Time range
     TIME_RANGES,
-    selectedDays: 30,
+    selectedDays: 7,
     customStart: '',
     todayStr: todayStr(),
 
@@ -75,7 +75,7 @@ Page({
 
   onLoad() {
     wx.setNavigationBarTitle({ title: '旅程' })
-    this._loadChart(30)
+    this._loadChart(7)
   },
 
   // ── Data loading ───────────────────────────────────────────────────────────
@@ -233,6 +233,20 @@ Page({
     })
     this._updateBtnLabel(this.data.allSymptoms, selectedKeys)
     this._rebuildSeries()
+  },
+
+  // ── Share ──────────────────────────────────────────────────────────────────
+
+  goShare() {
+    const { interpretation, chartSeries, selectedKeys, allSymptoms } = this.data
+    const selectedSymptoms = selectedKeys.map(key => {
+      const s = allSymptoms.find(a => a.key === key)
+      return { key, name: s ? s.name : key }
+    })
+    const app = getApp()
+    app.globalData = app.globalData || {}
+    app.globalData.shareData = { interpretation, chartSeries, selectedSymptoms }
+    wx.navigateTo({ url: '/pages/report/share/index' })
   },
 
   // ── Helpers ────────────────────────────────────────────────────────────────

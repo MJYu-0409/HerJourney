@@ -55,6 +55,13 @@
 
     <view class="ai-card-header">
       <view class="ai-badge">AI 发现</view>
+      <view
+        class="regen-icon-btn"
+        wx:if="{{conditionsChanged && !aiLoading && chartSeries.length}}"
+        bindtap="regenerate"
+      >
+        <image class="regen-icon-img" src="/assets/icons/refresh.svg" mode="aspectFit" />
+      </view>
     </view>
 
     <!-- 加载中 -->
@@ -73,19 +80,16 @@
     <!-- 暂无内容 -->
     <text class="ai-empty" wx:if="{{!aiLoading && !interpretation}}">选择症状并生成图表后，AI 将为你提供专属解读。</text>
 
-    <!-- 重新生成按钮 -->
-    <view
-      class="regen-btn"
-      wx:if="{{conditionsChanged && !aiLoading && chartSeries.length}}"
-      bindtap="regenerate"
-    >
-      <text class="regen-icon">✨</text>
-      <text>重新生成解读</text>
-    </view>
-
   </view>
 
-  <view style="height:60rpx" />
+  <!-- ── 分享旅程按钮 ──────────────────────────────────────────────── -->
+  <view class="submit-wrap">
+    <view class="submit-btn" bindtap="goShare">
+      <text>分享旅程</text>
+    </view>
+  </view>
+
+  <view style="height:40rpx" />
 
 </scroll-view>
 

@@ -252,7 +252,7 @@
   <!-- ── 提交按钮 ─────────────────────────────────────────────── -->
   <view class="submit-wrap">
     <view class="submit-btn {{submitting ? 'submitting' : ''}}" bindtap="onSubmit">
-      <text wx:if="{{!submitting}}">完成今日记录 ✨</text>
+      <text wx:if="{{!submitting}}">完成今日记录</text>
       <text wx:if="{{submitting}}">提交中…</text>
     </view>
   </view>

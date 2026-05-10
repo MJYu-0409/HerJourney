@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/daily/index",
     "pages/splash/index",
     "pages/chat/index",
-    "pages/daily/index",
     "pages/community/index",
     "pages/profile/index",
     "pages/profile/edit/index",
-    "pages/report/index"
+    "pages/report/index",
+    "pages/report/share/index"
   ],
   "tabBar": {
     "color": "#7B7385",
