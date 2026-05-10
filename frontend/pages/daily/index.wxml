@@ -1,0 +1,264 @@
+<scroll-view class="page" scroll-y enhanced bounces>
+
+  <!-- ── 头部问候 ─────────────────────────────────────────────── -->
+  <view class="greeting-card">
+    <view class="greeting-left">
+      <text class="greeting-date">{{todayLabel}}</text>
+      <text class="greeting-text">{{greetingText}}，{{nickname}}</text>
+      <view class="checked-badge" wx:if="{{alreadyChecked}}">
+        <text>✓ 今日已打卡</text>
+      </view>
+    </view>
+    <text class="greeting-emoji">🌸</text>
+  </view>
+
+  <!-- ── 模块1：今日状态 ──────────────────────────────────────── -->
+  <view class="section-card">
+    <view class="section-title-row">
+      <text class="section-title">今日整体状态</text>
+      <text class="section-hint">1 = 很好，5 = 很差</text>
+    </view>
+    <view class="overall-row">
+      <view
+        wx:for="{{OVERALL_OPTS}}"
+        wx:key="score"
+        class="overall-btn {{overallScore === item.score ? 'overall-on' : ''}}"
+        bindtap="setOverall"
+        data-score="{{item.score}}"
+      >
+        <text class="overall-emoji">{{item.emoji}}</text>
+        <text class="overall-label">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── 症状记录 ─────────────────────────────────────────────── -->
+  <view class="section-card">
+    <view class="section-title-row">
+      <text class="section-title">症状记录</text>
+      <text class="section-hint">勾选后评分</text>
+    </view>
+
+    <view wx:for="{{categories}}" wx:for-item="cat" wx:for-index="catIdx" wx:key="title">
+      <!-- 分类标题 -->
+      <view class="cat-header">
+        <text class="cat-icon">{{cat.icon}}</text>
+        <text class="cat-title">{{cat.title}}</text>
+      </view>
+
+      <!-- 症状选择 chips -->
+      <view class="chips-wrap">
+        <view
+          wx:for="{{cat.symptoms}}"
+          wx:for-item="sym"
+          wx:for-index="symIdx"
+          wx:key="key"
+          class="sym-chip {{sym.selected ? 'chip-on' : ''}}"
+          bindtap="toggleSymptom"
+          data-cat="{{catIdx}}"
+          data-idx="{{symIdx}}"
+        >{{sym.name}}</view>
+      </view>
+
+      <!-- 选中症状的评分行 -->
+      <view
+        wx:for="{{cat.symptoms}}"
+        wx:for-item="sym"
+        wx:for-index="symIdx"
+        wx:key="key"
+        wx:if="{{sym.selected}}"
+        class="score-row"
+      >
+        <text class="score-sym-name">{{sym.name}}</text>
+        <view class="score-opts">
+          <view
+            wx:for="{{SCORE_OPTS}}"
+            wx:for-item="opt"
+            wx:key="score"
+            class="score-opt {{sym.score === opt.score ? 'score-on score-on-' + opt.score : ''}}"
+            bindtap="setScore"
+            data-cat="{{catIdx}}"
+            data-idx="{{symIdx}}"
+            data-score="{{opt.score}}"
+          >{{opt.label}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── 模块2：经期专项 ─────────────────────────────────────── -->
+  <view class="section-card">
+    <text class="section-title">经期记录</text>
+    <view class="menstrual-toggle">
+      <view
+        class="toggle-opt {{menstrualStatus === 'none' ? 'toggle-on' : ''}}"
+        bindtap="setMenstrual"
+        data-val="none"
+      >无经期</view>
+      <view
+        class="toggle-opt {{menstrualStatus === 'period' ? 'toggle-on' : ''}}"
+        bindtap="setMenstrual"
+        data-val="period"
+      >经期中</view>
+    </view>
+
+    <!-- 经期详情 -->
+    <view class="period-detail" wx:if="{{menstrualStatus === 'period'}}">
+      <!-- 经期天数 -->
+      <view class="period-row">
+        <text class="period-label">经期第</text>
+        <picker mode="selector" range="{{DAY_RANGE}}" value="{{menstrualDayIdx}}" bindchange="onMenstrualDay">
+          <view class="picker-val">{{DAY_RANGE[menstrualDayIdx]}}天</view>
+        </picker>
+      </view>
+
+      <!-- 经量 -->
+      <view class="period-row">
+        <text class="period-label">经量</text>
+        <view class="flow-opts">
+          <view
+            wx:for="{{FLOW_OPTS}}"
+            wx:key="val"
+            class="flow-opt {{menstrualFlow === item.val ? 'flow-on' : ''}}"
+            bindtap="setFlow"
+            data-val="{{item.val}}"
+          >{{item.label}}</view>
+        </view>
+      </view>
+
+      <!-- 痛经评分 -->
+      <view class="period-row">
+        <text class="period-label">痛经程度</text>
+        <view class="score-opts">
+          <view
+            wx:for="{{SCORE_OPTS}}"
+            wx:for-item="opt"
+            wx:key="score"
+            class="score-opt {{menstrualPain === opt.score ? 'score-on score-on-' + opt.score : ''}}"
+            bindtap="setPain"
+            data-score="{{opt.score}}"
+          >{{opt.label}}</view>
+        </view>
+      </view>
+
+      <!-- 经血异常 -->
+      <view class="period-row period-row-col">
+        <text class="period-label">经血异常</text>
+        <view class="abnormal-opts">
+          <view
+            wx:for="{{ABNORMAL_OPTS}}"
+            wx:key="val"
+            class="ab-chip {{menstrualAbnormal.indexOf(item.val) !== -1 ? 'ab-on' : ''}}"
+            bindtap="toggleAbnormal"
+            data-val="{{item.val}}"
+          >{{item.label}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── 用药记录 ─────────────────────────────────────────────── -->
+  <view class="section-card">
+    <text class="section-title">今日用药 / 干预</text>
+    <view class="med-grid">
+      <view
+        wx:for="{{MED_OPTS}}"
+        wx:key="val"
+        class="med-chip {{medications.indexOf(item.val) !== -1 ? 'med-on' : ''}}"
+        bindtap="toggleMed"
+        data-val="{{item.val}}"
+      >{{item.label}}</view>
+    </view>
+  </view>
+
+  <!-- ── 备注 ────────────────────────────────────────────────── -->
+  <view class="section-card">
+    <text class="section-title">今日备注 <text class="section-hint">（选填）</text></text>
+    <textarea
+      class="notes-input"
+      placeholder="一句话记录今天的感受…"
+      placeholder-class="notes-placeholder"
+      maxlength="200"
+      value="{{notes}}"
+      bindinput="onNotes"
+      auto-height
+    />
+  </view>
+
+  <!-- ── 模块3：每周记录 ─────────────────────────────────────── -->
+  <view class="section-card weekly-card">
+    <view class="weekly-header">
+      <text class="section-title">每周记录</text>
+      <view class="weekly-badge {{weeklyDone ? 'badge-done' : 'badge-todo'}}">
+        {{weeklyDone ? '本周已完成' : '本周未填'}}
+      </view>
+    </view>
+
+    <view class="weekly-body" wx:if="{{!weeklyDone}}">
+      <!-- 体重变化 -->
+      <view class="weekly-row">
+        <text class="weekly-label">体重变化</text>
+        <view class="tog-group">
+          <view
+            wx:for="{{WEIGHT_OPTS}}"
+            wx:key="val"
+            class="tog-opt {{weeklyWeight === item.val ? 'tog-on' : ''}}"
+            bindtap="setWeeklyWeight"
+            data-val="{{item.val}}"
+          >{{item.label}}</view>
+        </view>
+      </view>
+
+      <!-- 血压 -->
+      <view class="weekly-row">
+        <text class="weekly-label">血压情况</text>
+        <view class="tog-group">
+          <view
+            wx:for="{{BP_OPTS}}"
+            wx:key="val"
+            class="tog-opt {{weeklyBP === item.val ? 'tog-on' : ''}}"
+            bindtap="setWeeklyBP"
+            data-val="{{item.val}}"
+          >{{item.label}}</view>
+        </view>
+      </view>
+
+      <!-- 骨骼关节 -->
+      <view class="weekly-row">
+        <text class="weekly-label">骨骼关节持续疼痛</text>
+        <view class="tog-group">
+          <view class="tog-opt {{weeklyJoint === true ? 'tog-on' : ''}}" bindtap="setWeeklyJoint" data-val="true">是</view>
+          <view class="tog-opt {{weeklyJoint === false ? 'tog-on' : ''}}" bindtap="setWeeklyJoint" data-val="false">否</view>
+        </view>
+      </view>
+
+      <!-- 性生活 -->
+      <view class="weekly-row">
+        <text class="weekly-label">性生活不适</text>
+        <view class="tog-group">
+          <view class="tog-opt {{weeklyLibido === 'yes' ? 'tog-on' : ''}}" bindtap="setWeeklyLibido" data-val="yes">是</view>
+          <view class="tog-opt {{weeklyLibido === 'no' ? 'tog-on' : ''}}" bindtap="setWeeklyLibido" data-val="no">否</view>
+          <view class="tog-opt {{weeklyLibido === 'na' ? 'tog-on' : ''}}" bindtap="setWeeklyLibido" data-val="na">不适用</view>
+        </view>
+      </view>
+
+      <view class="weekly-skip" bindtap="skipWeekly">跳过本周记录</view>
+    </view>
+
+    <!-- 已完成状态 -->
+    <view class="weekly-done-tip" wx:if="{{weeklyDone}}">
+      <text>✓ 本周记录已完成，下周再来更新</text>
+    </view>
+  </view>
+
+  <!-- ── 提交按钮 ─────────────────────────────────────────────── -->
+  <view class="submit-wrap">
+    <view class="submit-btn {{submitting ? 'submitting' : ''}}" bindtap="onSubmit">
+      <text wx:if="{{!submitting}}">完成今日打卡 ✨</text>
+      <text wx:if="{{submitting}}">提交中…</text>
+    </view>
+  </view>
+
+  <view style="height:40rpx" />
+
+</scroll-view>

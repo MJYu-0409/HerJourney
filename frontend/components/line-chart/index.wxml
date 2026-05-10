@@ -1,0 +1,22 @@
+<view class="chart-wrap">
+  <canvas
+    type="2d"
+    id="lc"
+    class="chart-canvas"
+    bindtouchstart="onTouchStart"
+    bindtouchmove="onTouchMove"
+    bindtouchend="onTouchEnd"
+  />
+  <view
+    class="tooltip"
+    wx:if="{{tooltip.show}}"
+    style="left:{{tooltip.x}}px;top:{{tooltip.y}}px"
+  >
+    <view class="tip-date">{{tooltip.date}}</view>
+    <view wx:for="{{tooltip.items}}" wx:key="name" class="tip-row">
+      <view class="tip-dot" style="background:{{item.color}}" />
+      <text class="tip-name">{{item.name}}</text>
+      <text class="tip-val">{{item.score}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,71 @@
+<view class="input-bar {{keyboardShow ? 'keyboard-up' : ''}}">
+  <view class="bar-inner">
+
+    <!-- 语音 / 键盘 切换 -->
+    <view class="icon-btn" bindtap="toggleMode" wx:if="{{!hasText}}">
+      <text class="icon-text">{{mode === 'voice' ? '⌨️' : '🎤'}}</text>
+    </view>
+
+    <!-- 文字输入框 -->
+    <view class="input-wrap" wx:if="{{mode === 'text'}}">
+      <input
+        class="text-input"
+        type="text"
+        value="{{inputValue}}"
+        placeholder="说说你的感受..."
+        placeholder-style="color:#B8B0C5;font-size:28rpx"
+        confirm-type="send"
+        adjust-position="{{false}}"
+        hold-keyboard
+        bindinput="onInput"
+        bindfocus="onFocus"
+        bindblur="onBlur"
+        bindconfirm="onConfirm"
+        disabled="{{disabled}}"
+      />
+    </view>
+
+    <!-- 语音按钮 -->
+    <view
+      class="voice-btn {{pressing ? 'pressing' : ''}}"
+      wx:if="{{mode === 'voice'}}"
+      bindtouchstart="onTouchStart"
+      bindtouchmove="onTouchMove"
+      bindtouchend="onTouchEnd"
+      catchtap
+    >
+      <text class="voice-btn-text">{{pressing ? '松开发送' : '按住说话'}}</text>
+    </view>
+
+    <!-- 发送 / + 按钮 -->
+    <view class="icon-btn send-btn" wx:if="{{hasText}}" bindtap="onSendTap">
+      <text class="send-text">发送</text>
+    </view>
+    <view class="icon-btn" wx:else bindtap="onPlusTap">
+      <text class="icon-text plus">＋</text>
+    </view>
+
+  </view>
+
+  <!-- 扩展面板 -->
+  <view class="extra-panel" wx:if="{{showExtra}}">
+    <view class="extra-grid">
+      <view class="extra-item" bindtap="chooseImage" data-type="图片">
+        <view class="extra-icon">🖼️</view>
+        <text class="extra-label">图片</text>
+      </view>
+      <view class="extra-item" bindtap="chooseVideo" data-type="视频">
+        <view class="extra-icon">🎬</view>
+        <text class="extra-label">视频</text>
+      </view>
+      <view class="extra-item" bindtap="onFileTap" data-type="文件">
+        <view class="extra-icon">📎</view>
+        <text class="extra-label">文件</text>
+      </view>
+      <view class="extra-item" bindtap="onLocationTap" data-type="位置">
+        <view class="extra-icon">📍</view>
+        <text class="extra-label">位置</text>
+      </view>
+    </view>
+  </view>
+</view>

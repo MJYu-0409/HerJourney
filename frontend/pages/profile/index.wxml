@@ -1,0 +1,137 @@
+<scroll-view class="page {{isDark ? 'dark' : ''}}" scroll-y enhanced bounces>
+
+  <!-- ── 用户信息头部 ──────────────────────────────────────────── -->
+  <view class="header-card">
+    <view class="user-row">
+      <view class="avatar">
+        <text class="avatar-char">{{userInfo.nickname[0]}}</text>
+        <view class="avatar-glow" />
+      </view>
+      <view class="user-info">
+        <text class="username">{{userInfo.nickname}}</text>
+        <text class="user-stage">{{userInfo.stage}}</text>
+      </view>
+      <view class="theme-toggle" bindtap="toggleTheme">
+        <text class="theme-icon">{{isDark ? '☀️' : '🌙'}}</text>
+      </view>
+    </view>
+
+    <view class="stats-row">
+      <view class="stat-item">
+        <text class="stat-num">{{stats.totalDays}}</text>
+        <text class="stat-label">累计打卡</text>
+      </view>
+      <view class="stat-divider" />
+      <view class="stat-item">
+        <text class="stat-num">{{stats.currentStreak}}</text>
+        <text class="stat-label">连续天数</text>
+      </view>
+      <view class="stat-divider" />
+      <view class="stat-item">
+        <text class="stat-num">{{stats.avgScore || '--'}}</text>
+        <text class="stat-label">近月均分</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── Year in Pixels ────────────────────────────────────────── -->
+  <view class="section-card pixels-card">
+    <view class="card-header">
+      <text class="card-title">这一年的你</text>
+      <view class="year-nav">
+        <view class="year-btn" bindtap="prevYear"><text>‹</text></view>
+        <text class="year-text">{{selectedYear}}</text>
+        <view class="year-btn" bindtap="nextYear"><text>›</text></view>
+      </view>
+    </view>
+
+    <view class="pixel-wrapper">
+      <!-- 固定左列：星期标签（只显示一/三/五/日，间隔行） -->
+      <view class="day-labels">
+        <view class="day-label">一</view>
+        <view class="day-label-empty" />
+        <view class="day-label">三</view>
+        <view class="day-label-empty" />
+        <view class="day-label">五</view>
+        <view class="day-label-empty" />
+        <view class="day-label">日</view>
+      </view>
+
+      <!-- 横向滚动区 -->
+      <scroll-view scroll-x class="pixel-scroll" enhanced>
+        <view class="pixel-content">
+          <!-- 月份标签行 -->
+          <view class="month-row">
+            <view
+              wx:for="{{monthSpans}}"
+              wx:key="label"
+              class="month-label-cell"
+              style="width:{{item.width}}rpx"
+            >{{item.label}}</view>
+          </view>
+
+          <!-- 像素列（每列 = 一周，7 个格子纵向排列） -->
+          <view class="weeks-row">
+            <view wx:for="{{weeks}}" wx:key="index" class="week-col">
+              <view
+                wx:for="{{item.days}}"
+                wx:for-item="day"
+                wx:for-index="di"
+                wx:key="di"
+                class="pixel-cell {{!day.inYear ? 'cell-void' : ''}}"
+                style="background-color:{{day.color}}"
+                bindtap="onDayTap"
+                data-day="{{day}}"
+              />
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 图例 -->
+    <view class="legend-row">
+      <view wx:for="{{LEGEND}}" wx:key="label" class="legend-item">
+        <view class="legend-dot" style="background-color:{{item.color}}" />
+        <text class="legend-text">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── 快捷功能三宫格 ─────────────────────────────────────────── -->
+  <view class="section-card">
+    <view class="quick-grid">
+      <view
+        wx:for="{{quickActions}}"
+        wx:key="label"
+        class="quick-item"
+        bindtap="onQuickAction"
+        data-action="{{item.action}}"
+      >
+        <view class="quick-icon-wrap">
+          <text class="quick-icon">{{item.icon}}</text>
+        </view>
+        <text class="quick-label">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── 设置列表 ───────────────────────────────────────────────── -->
+  <view class="section-card settings-card">
+    <view
+      wx:for="{{settingItems}}"
+      wx:key="label"
+      class="setting-item {{item.danger ? 'danger' : ''}}"
+      bindtap="onSettingTap"
+      data-action="{{item.action}}"
+    >
+      <view class="setting-left">
+        <text class="setting-icon">{{item.icon}}</text>
+        <text class="setting-label">{{item.label}}</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
+  <view style="height:80rpx" />
+</scroll-view>

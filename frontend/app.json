@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/splash/index",
+    "pages/chat/index",
+    "pages/daily/index",
+    "pages/community/index",
+    "pages/profile/index",
+    "pages/report/index"
+  ],
+  "tabBar": {
+    "color": "#7B7385",
+    "selectedColor": "#8E7AB5",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/daily/index",
+        "text": "今日",
+        "iconPath": "assets/icons/daily.png",
+        "selectedIconPath": "assets/icons/daily-active.png"
+      },
+      {
+        "pagePath": "pages/chat/index",
+        "text": "问AI",
+        "iconPath": "assets/icons/chat.png",
+        "selectedIconPath": "assets/icons/chat-active.png"
+      },
+      {
+        "pagePath": "pages/community/index",
+        "text": "社区",
+        "iconPath": "assets/icons/community.png",
+        "selectedIconPath": "assets/icons/community-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "assets/icons/profile.png",
+        "selectedIconPath": "assets/icons/profile-active.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FAF7F4",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FAF7F4"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

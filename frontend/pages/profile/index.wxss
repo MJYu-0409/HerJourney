@@ -1,0 +1,371 @@
+/* ── 页面 ──────────────────────────────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding: 24rpx 32rpx 0;
+  display: block;
+}
+
+/* 深夜模式覆盖 */
+.page.dark {
+  background: #1F1B2E;
+}
+.page.dark .header-card,
+.page.dark .section-card {
+  background: #2B243A;
+}
+.page.dark .username,
+.page.dark .stat-num,
+.page.dark .card-title,
+.page.dark .quick-label,
+.page.dark .setting-label,
+.page.dark .year-text {
+  color: #F4EEF6;
+}
+.page.dark .user-stage,
+.page.dark .stat-label,
+.page.dark .legend-text,
+.page.dark .month-label-cell,
+.page.dark .day-label {
+  color: #B8B0C5;
+}
+.page.dark .stat-divider { background: #3D3550; }
+.page.dark .setting-item { border-bottom-color: #3D3550; }
+.page.dark .setting-arrow { color: #6B6080; }
+
+/* ── 卡片通用 ─────────────────────────────────────────────────────────────── */
+
+.header-card,
+.section-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 24rpx;
+  overflow: hidden;
+}
+
+.header-card { padding: 40rpx 36rpx 32rpx; }
+.section-card { padding: 32rpx; }
+
+/* ── 用户头部 ─────────────────────────────────────────────────────────────── */
+
+.user-row {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  margin-bottom: 40rpx;
+}
+
+.avatar {
+  position: relative;
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C6B4E1 0%, #E7C8D5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatar-char {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.avatar-glow {
+  position: absolute;
+  inset: -8rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198,180,225,0.3) 0%, transparent 70%);
+}
+
+.user-info { flex: 1; }
+
+.username {
+  display: block;
+  font-size: var(--font-md);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8rpx;
+}
+
+.user-stage {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+}
+
+.theme-toggle {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.theme-toggle:active { opacity: 0.7; }
+.theme-icon { font-size: 36rpx; }
+
+/* 统计数字 */
+.stats-row {
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 24rpx 0;
+}
+
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.stat-num {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  color: var(--color-brand);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+}
+
+.stat-divider {
+  width: 2rpx;
+  height: 56rpx;
+  background: rgba(142, 122, 181, 0.15);
+}
+
+/* ── Year in Pixels ───────────────────────────────────────────────────────── */
+
+.pixels-card { padding: 32rpx 32rpx 24rpx; }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28rpx;
+}
+
+.card-title {
+  font-size: var(--font-md);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.year-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
+  padding: 6rpx 8rpx;
+}
+
+.year-btn {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.year-btn:active { background: rgba(142,122,181,0.2); }
+.year-btn text { font-size: 36rpx; color: var(--color-brand); }
+
+.year-text {
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+  font-weight: 500;
+  min-width: 80rpx;
+  text-align: center;
+}
+
+/* 像素网格容器 */
+.pixel-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 8rpx;
+}
+
+/* 星期标签列（固定） */
+.day-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex-shrink: 0;
+  padding-top: 36rpx; /* 对齐月份标签行高度 */
+}
+
+.day-label {
+  width: 32rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  font-size: 20rpx;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 4rpx;
+}
+
+.day-label-empty {
+  width: 32rpx;
+  height: 28rpx;
+  margin-bottom: 4rpx;
+}
+
+/* 横向滚动 */
+.pixel-scroll {
+  flex: 1;
+  overflow: hidden;
+}
+
+.pixel-content {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+/* 月份标签行 */
+.month-row {
+  display: flex;
+  height: 36rpx;
+  align-items: center;
+  margin-bottom: 4rpx;
+}
+
+.month-label-cell {
+  font-size: 20rpx;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: visible;
+}
+
+/* 周列容器 */
+.weeks-row {
+  display: flex;
+  gap: 4rpx;
+}
+
+.week-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+/* 像素格子 */
+.pixel-cell {
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 6rpx;
+  transition: transform 0.1s;
+}
+.pixel-cell:active { transform: scale(0.85); }
+
+.cell-void {
+  background-color: transparent !important;
+}
+
+/* 图例 */
+.legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx 24rpx;
+  margin-top: 24rpx;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.legend-dot {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 4rpx;
+  flex-shrink: 0;
+}
+
+.legend-text {
+  font-size: 20rpx;
+  color: var(--text-secondary);
+}
+
+/* ── 快捷功能 ─────────────────────────────────────────────────────────────── */
+
+.quick-grid {
+  display: flex;
+  justify-content: space-around;
+}
+
+.quick-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  flex: 1;
+}
+.quick-item:active .quick-icon-wrap { transform: scale(0.92); }
+
+.quick-icon-wrap {
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
+  box-shadow: var(--shadow-soft);
+}
+
+.quick-icon { font-size: 52rpx; line-height: 1; }
+
+.quick-label {
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ── 设置列表 ─────────────────────────────────────────────────────────────── */
+
+.settings-card { padding: 0; }
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 36rpx 32rpx;
+  border-bottom: 1rpx solid rgba(142,122,181,0.08);
+}
+.setting-item:last-child { border-bottom: none; }
+.setting-item:active { background: rgba(142,122,181,0.05); }
+
+.setting-left {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.setting-icon { font-size: 40rpx; line-height: 1; }
+
+.setting-label {
+  font-size: var(--font-base);
+  color: var(--text-primary);
+}
+
+.setting-item.danger .setting-label { color: #E07C7C; }
+
+.setting-arrow {
+  font-size: 36rpx;
+  color: var(--text-hint);
+}

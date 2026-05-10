@@ -1,0 +1,98 @@
+/* ── Design Tokens ─────────────────────────────────────────────────────────── */
+
+page {
+  --bg-primary: #FAF7F4;
+  --bg-secondary: #F4EEF6;
+  --bg-card: #FFFFFF;
+  --bg-warm: #F3E9DF;
+
+  --color-brand: #8E7AB5;
+  --color-brand-light: #C6B4E1;
+  --color-brand-gradient: linear-gradient(135deg, #8E7AB5 0%, #B09FD0 100%);
+
+  --color-mist-pink: #E7C8D5;
+  --color-fog-blue: #B8C7D9;
+
+  --text-primary: #3B3446;
+  --text-secondary: #7B7385;
+  --text-hint: #B8B0C5;
+
+  --radius-sm: 12rpx;
+  --radius-md: 20rpx;
+  --radius-lg: 32rpx;
+  --radius-xl: 48rpx;
+  --radius-full: 9999rpx;
+
+  --shadow-soft: 0 4rpx 24rpx rgba(142, 122, 181, 0.10);
+  --shadow-card: 0 8rpx 32rpx rgba(59, 52, 70, 0.08);
+
+  --font-xs: 22rpx;
+  --font-sm: 26rpx;
+  --font-base: 30rpx;
+  --font-md: 34rpx;
+  --font-lg: 40rpx;
+  --font-xl: 52rpx;
+
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, 'HarmonyOS Sans', 'PingFang SC', sans-serif;
+  font-size: var(--font-base);
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+/* ── Reset ─────────────────────────────────────────────────────────────────── */
+
+view, text, input, textarea, image, scroll-view {
+  box-sizing: border-box;
+}
+
+/* ── Common ─────────────────────────────────────────────────────────────────── */
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 32rpx;
+}
+
+.card-warm {
+  background: var(--bg-warm);
+  border-radius: var(--radius-lg);
+  padding: 28rpx 32rpx;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96rpx;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #8E7AB5 0%, #A990CC 100%);
+  color: #FFFFFF;
+  font-size: var(--font-base);
+  font-weight: 500;
+  box-shadow: 0 8rpx 24rpx rgba(142, 122, 181, 0.35);
+  letter-spacing: 2rpx;
+}
+
+.btn-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  border-radius: var(--radius-full);
+  border: 2rpx solid var(--color-brand-light);
+  color: var(--color-brand);
+  font-size: var(--font-sm);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8rpx 20rpx;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  color: var(--color-brand);
+  font-size: var(--font-xs);
+}
