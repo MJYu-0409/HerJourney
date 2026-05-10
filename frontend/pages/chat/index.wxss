@@ -69,7 +69,7 @@
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #C6B4E1 0%, #E7C8D5 100%);
+  background: linear-gradient(135deg, #B4A5CC 0%, #E7C8D5 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +91,7 @@
   width: 160rpx;
   height: 160rpx;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(198, 180, 225, 0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(180, 165, 204, 0.4) 0%, transparent 70%);
   animation: glowPulse 3s ease-in-out infinite;
 }
 
@@ -182,7 +182,7 @@
   width: 68rpx;
   height: 68rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #C6B4E1 0%, #E7C8D5 100%);
+  background: linear-gradient(135deg, #B4A5CC 0%, #E7C8D5 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -216,7 +216,7 @@
 
 /* 用户气泡：品牌渐变紫 */
 .bubble.user {
-  background: linear-gradient(135deg, #8E7AB5 0%, #A990CC 100%);
+  background: linear-gradient(135deg, #7B6CA0 0%, #9B8CB8 100%);
   border-bottom-right-radius: var(--radius-sm);
 }
 
@@ -308,7 +308,7 @@
   width: 180rpx;
   height: 180rpx;
   border-radius: 50%;
-  background: rgba(198, 180, 225, 0.25);
+  background: rgba(180, 165, 204, 0.25);
   animation: ripple 1.5s ease-out infinite;
 }
 

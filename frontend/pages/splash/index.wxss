@@ -21,7 +21,7 @@
 .glow-1 {
   width: 600rpx;
   height: 600rpx;
-  background: #C6B4E1;
+  background: #B4A5CC;
   top: -120rpx;
   right: -180rpx;
 }
@@ -29,7 +29,7 @@
 .glow-2 {
   width: 500rpx;
   height: 500rpx;
-  background: #D8C4D8;
+  background: #C8B8CC;
   bottom: 280rpx;
   left: -160rpx;
 }

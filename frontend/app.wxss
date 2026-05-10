@@ -2,13 +2,13 @@
 
 page {
   --bg-primary: #FAF7F4;
-  --bg-secondary: #F4EEF6;
+  --bg-secondary: #EFECF4;
   --bg-card: #FFFFFF;
   --bg-warm: #F3E9DF;
 
-  --color-brand: #8E7AB5;
-  --color-brand-light: #C6B4E1;
-  --color-brand-gradient: linear-gradient(135deg, #8E7AB5 0%, #B09FD0 100%);
+  --color-brand: #7B6CA0;
+  --color-brand-light: #B4A5CC;
+  --color-brand-gradient: linear-gradient(135deg, #7B6CA0 0%, #9B8CB8 100%);
 
   --color-mist-pink: #E7C8D5;
   --color-fog-blue: #B8C7D9;
@@ -23,7 +23,7 @@ page {
   --radius-xl: 48rpx;
   --radius-full: 9999rpx;
 
-  --shadow-soft: 0 4rpx 24rpx rgba(142, 122, 181, 0.10);
+  --shadow-soft: 0 4rpx 24rpx rgba(123, 108, 160, 0.10);
   --shadow-card: 0 8rpx 32rpx rgba(59, 52, 70, 0.08);
 
   --font-xs: 22rpx;
@@ -68,11 +68,11 @@ view, text, input, textarea, image, scroll-view {
   justify-content: center;
   height: 96rpx;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, #8E7AB5 0%, #A990CC 100%);
+  background: linear-gradient(135deg, #7B6CA0 0%, #9B8CB8 100%);
   color: #FFFFFF;
   font-size: var(--font-base);
   font-weight: 500;
-  box-shadow: 0 8rpx 24rpx rgba(142, 122, 181, 0.35);
+  box-shadow: 0 8rpx 24rpx rgba(123, 108, 160, 0.35);
   letter-spacing: 2rpx;
 }
 

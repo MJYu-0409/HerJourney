@@ -9,20 +9,20 @@ function fullAvatar(url) {
 
 const SCORE_COLORS = {
   null:  '#EDE8F4',
-  1:     '#C6B4E1',
-  2:     '#A58DC8',
-  3:     '#8E7AB5',
-  4:     '#6B5A96',
-  5:     '#4A3B78',
+  1:     '#B4A5CC',
+  2:     '#9B8CB8',
+  3:     '#7B6CA0',
+  4:     '#6B5E8A',
+  5:     '#5A4A80',
 }
 
 const LEGEND = [
   { label: '未打卡', color: '#EDE8F4' },
-  { label: '很差',   color: '#C6B4E1' },
-  { label: '较差',   color: '#A58DC8' },
-  { label: '一般',   color: '#8E7AB5' },
-  { label: '较好',   color: '#6B5A96' },
-  { label: '很好',   color: '#4A3B78' },
+  { label: '很差',   color: '#B4A5CC' },
+  { label: '较差',   color: '#9B8CB8' },
+  { label: '一般',   color: '#7B6CA0' },
+  { label: '较好',   color: '#6B5E8A' },
+  { label: '很好',   color: '#5A4A80' },
 ]
 
 const MONTH_NAMES = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']

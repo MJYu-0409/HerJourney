@@ -140,8 +140,8 @@
 /* ── AI Card ──────────────────────────────────────────────────────────────── */
 
 .ai-card {
-  background: linear-gradient(135deg, #F8F5FF 0%, #FFF5F8 100%);
-  border: 1rpx solid rgba(198, 180, 225, 0.3);
+  background: linear-gradient(135deg, #F5F3F8 0%, #FFF5F8 100%);
+  border: 1rpx solid rgba(180, 165, 204, 0.3);
 }
 
 .ai-card-header {
@@ -153,7 +153,7 @@
   font-size: var(--font-sm);
   font-weight: 700;
   color: var(--color-brand);
-  background: rgba(142, 122, 181, 0.12);
+  background: rgba(123, 108, 160, 0.12);
   border-radius: var(--radius-full);
   padding: 8rpx 24rpx;
 }
@@ -219,7 +219,7 @@
   font-weight: 600;
   color: var(--color-brand);
 }
-.regen-btn:active { background: rgba(142, 122, 181, 0.08); }
+.regen-btn:active { background: rgba(123, 108, 160, 0.08); }
 
 .regen-icon { font-size: 28rpx; }
 
@@ -253,7 +253,7 @@
   width: 80rpx;
   height: 8rpx;
   border-radius: 4rpx;
-  background: #E0D9EE;
+  background: #D8D2E4;
   margin: 20rpx auto 0;
 }
 
@@ -301,7 +301,7 @@
 
 .symptom-chip.selected {
   color: var(--color-brand);
-  background: rgba(142, 122, 181, 0.1);
+  background: rgba(123, 108, 160, 0.1);
   border-color: var(--color-brand);
   font-weight: 600;
 }

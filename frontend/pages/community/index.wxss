@@ -107,9 +107,9 @@
 }
 
 .filter-tag.active {
-  background: linear-gradient(135deg, #8E7AB5 0%, #A990CC 100%);
+  background: linear-gradient(135deg, #7B6CA0 0%, #9B8CB8 100%);
   color: #FFFFFF;
-  box-shadow: 0 4rpx 16rpx rgba(142, 122, 181, 0.3);
+  box-shadow: 0 4rpx 16rpx rgba(123, 108, 160, 0.3);
 }
 
 /* ── Post List ────────────────────────────────────────────────────────────── */
@@ -142,7 +142,7 @@
   left: 0;
   right: 0;
   height: 4rpx;
-  background: linear-gradient(90deg, #8E7AB5 0%, #E7C8D5 50%, #B8C7D9 100%);
+  background: linear-gradient(90deg, #7B6CA0 0%, #E7C8D5 50%, #B8C7D9 100%);
   opacity: 0.3;
 }
 
@@ -270,7 +270,7 @@
   justify-content: space-around;
   padding-top: 20rpx;
   margin-top: 8rpx;
-  border-top: 1rpx solid rgba(142, 122, 181, 0.08);
+  border-top: 1rpx solid rgba(123, 108, 160, 0.08);
 }
 
 .action-btn {
@@ -283,11 +283,11 @@
 }
 
 .action-btn:active {
-  background: rgba(142, 122, 181, 0.08);
+  background: rgba(123, 108, 160, 0.08);
 }
 
 .action-btn.active {
-  background: rgba(142, 122, 181, 0.1);
+  background: rgba(123, 108, 160, 0.1);
 }
 
 .action-btn.active .action-text {
