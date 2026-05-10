@@ -105,7 +105,7 @@ function buildYearGrid(year, scoreMap) {
 
 Page({
   data: {
-    userInfo: { nickname: '小桃', stage: '围绝经期' },
+    userInfo: { nickname: '小桃', stage: '' },
     stats: { totalDays: 0, currentStreak: 0, avgScore: null },
     selectedYear: new Date().getFullYear(),
     weeks: [],
