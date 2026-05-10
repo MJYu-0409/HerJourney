@@ -1,0 +1,335 @@
+/* ── 页面容器 ──────────────────────────────────────────────────────────────── */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* ── 洞察横幅 ──────────────────────────────────────────────────────────────── */
+
+.insight-banner {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin: 20rpx 32rpx 0;
+  padding: 20rpx 28rpx;
+  background: var(--bg-warm);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.insight-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: var(--color-brand);
+  flex-shrink: 0;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
+}
+
+.insight-text {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ── 消息滚动区 ────────────────────────────────────────────────────────────── */
+
+.messages {
+  flex: 1;
+  overflow: hidden;
+  /* padding-bottom 留出固定输入栏高度（108rpx）+ 安全区 + 余量 */
+  padding: 24rpx 32rpx 180rpx;
+}
+
+/* ── 空状态 ────────────────────────────────────────────────────────────────── */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60rpx;
+  padding-bottom: 32rpx;
+}
+
+.ai-avatar-wrap {
+  position: relative;
+  margin-bottom: 32rpx;
+}
+
+.ai-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C6B4E1 0%, #E7C8D5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ai-avatar-text {
+  font-size: 52rpx;
+  font-weight: 600;
+  color: #fff;
+}
+
+.ai-avatar-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198, 180, 225, 0.4) 0%, transparent 70%);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50%       { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
+
+.empty-greeting {
+  font-size: var(--font-lg);
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 16rpx;
+}
+
+.empty-sub {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.7;
+  padding: 0 32rpx;
+  margin-bottom: 56rpx;
+}
+
+.suggest-label {
+  font-size: var(--font-xs);
+  color: var(--text-hint);
+  letter-spacing: 2rpx;
+  margin-bottom: 24rpx;
+  align-self: flex-start;
+}
+
+.suggest-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.suggest-chip {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 28rpx 32rpx;
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.suggest-chip:active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+.chip-emoji {
+  font-size: 40rpx;
+  line-height: 1;
+}
+
+.chip-text {
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* ── 消息列表 ──────────────────────────────────────────────────────────────── */
+
+.msg-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+  padding-bottom: 16rpx;
+}
+
+.msg-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 16rpx;
+}
+
+.msg-row.user {
+  flex-direction: row-reverse;
+}
+
+/* AI 小头像 */
+.ai-avatar-sm {
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C6B4E1 0%, #E7C8D5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ai-avatar-sm text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ── 气泡 ──────────────────────────────────────────────────────────────────── */
+
+.bubble {
+  max-width: 72%;
+  padding: 24rpx 28rpx;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  box-shadow: var(--shadow-soft);
+}
+
+/* AI 气泡：暖白 + 雾紫边缘 */
+.bubble.assistant {
+  background: #FFFFFF;
+  border-bottom-left-radius: var(--radius-sm);
+  animation: fadeSlideIn 0.3s ease;
+}
+
+/* 用户气泡：品牌渐变紫 */
+.bubble.user {
+  background: linear-gradient(135deg, #8E7AB5 0%, #A990CC 100%);
+  border-bottom-right-radius: var(--radius-sm);
+}
+
+.bubble.user .bubble-text {
+  color: #FFFFFF;
+}
+
+.bubble.user .bubble-time {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12rpx); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.bubble-text {
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.bubble-time {
+  font-size: var(--font-xs);
+  color: var(--text-hint);
+  align-self: flex-end;
+}
+
+/* ── 打字动效 ──────────────────────────────────────────────────────────────── */
+
+.bubble.typing {
+  padding: 28rpx 32rpx;
+}
+
+.typing-dots {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: var(--color-brand-light);
+}
+
+.dot-1 { animation: bounce 1.2s ease-in-out 0s infinite; }
+.dot-2 { animation: bounce 1.2s ease-in-out 0.2s infinite; }
+.dot-3 { animation: bounce 1.2s ease-in-out 0.4s infinite; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+  40%            { transform: translateY(-10rpx); opacity: 1; }
+}
+
+/* ── 语音录制遮罩 ──────────────────────────────────────────────────────────── */
+
+.voice-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 27, 46, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(6rpx);
+}
+
+.voice-mask-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32rpx;
+}
+
+.voice-icon-wrap {
+  position: relative;
+  width: 180rpx;
+  height: 180rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.voice-ripple {
+  position: absolute;
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  background: rgba(198, 180, 225, 0.25);
+  animation: ripple 1.5s ease-out infinite;
+}
+
+@keyframes ripple {
+  from { transform: scale(0.8); opacity: 1; }
+  to   { transform: scale(1.6); opacity: 0; }
+}
+
+.voice-icon {
+  font-size: 80rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.voice-tip {
+  color: #FFFFFF;
+  font-size: var(--font-base);
+  font-weight: 500;
+}
+
+.voice-cancel-tip {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: var(--font-sm);
+}

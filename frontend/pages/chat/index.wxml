@@ -1,0 +1,101 @@
+<view class="page">
+
+  <!-- ── 顶部 AI 洞察横幅 ────────────────────────────────────── -->
+  <view class="insight-banner" wx:if="{{insightText}}">
+    <view class="insight-dot" />
+    <text class="insight-text">{{insightText}}</text>
+  </view>
+
+  <!-- ── 消息区域 ───────────────────────────────────────────── -->
+  <scroll-view
+    class="messages"
+    scroll-y
+    scroll-into-view="{{scrollAnchor}}"
+    scroll-with-animation
+    enhanced
+    bounces
+  >
+    <!-- 空状态：默认话题建议 -->
+    <view class="empty-state" wx:if="{{messages.length === 0 && !loading}}">
+      <view class="ai-avatar-wrap">
+        <view class="ai-avatar">
+          <text class="ai-avatar-text">她</text>
+        </view>
+        <view class="ai-avatar-glow" />
+      </view>
+      <text class="empty-greeting">你好，我在这里。</text>
+      <text class="empty-sub">你可以问我任何关于更年期的问题，或者就聊聊你的感受。</text>
+
+      <text class="suggest-label">姐妹们常问的</text>
+      <view class="suggest-list">
+        <view
+          wx:for="{{defaultTopics}}"
+          wx:key="index"
+          class="suggest-chip"
+          bindtap="onTopicTap"
+          data-topic="{{item.text}}"
+        >
+          <text class="chip-emoji">{{item.emoji}}</text>
+          <text class="chip-text">{{item.text}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 消息气泡列表 -->
+    <view class="msg-list" wx:if="{{messages.length > 0}}">
+      <view
+        wx:for="{{messages}}"
+        wx:key="id"
+        class="msg-row {{item.role}}"
+        id="msg-{{index}}"
+      >
+        <!-- AI 头像 -->
+        <view class="ai-avatar-sm" wx:if="{{item.role === 'assistant'}}">
+          <text>她</text>
+        </view>
+
+        <!-- 气泡 -->
+        <view class="bubble {{item.role}} {{item.animIn ? 'anim-in' : ''}}">
+          <text class="bubble-text" user-select>{{item.content}}</text>
+          <text class="bubble-time">{{item.timeStr}}</text>
+        </view>
+      </view>
+
+      <!-- 打字动效 -->
+      <view class="msg-row assistant" wx:if="{{loading}}">
+        <view class="ai-avatar-sm"><text>她</text></view>
+        <view class="bubble assistant typing">
+          <view class="typing-dots">
+            <view class="dot dot-1" />
+            <view class="dot dot-2" />
+            <view class="dot dot-3" />
+          </view>
+        </view>
+      </view>
+
+      <!-- 滚动锚点：高度等于输入栏，确保最后一条消息不被遮住 -->
+      <view id="scroll-bottom" style="height:1rpx;width:100%" />
+    </view>
+  </scroll-view>
+
+  <!-- ── 底部输入栏 ─────────────────────────────────────────── -->
+  <chat-input
+    bind:send="onSend"
+    bind:voiceEnd="onVoiceEnd"
+    bind:mediaChoose="onMediaChoose"
+    disabled="{{loading}}"
+  />
+
+  <!-- ── 语音录制遮罩 ────────────────────────────────────────── -->
+  <view class="voice-mask" wx:if="{{recording}}">
+    <view class="voice-mask-inner">
+      <view class="voice-icon-wrap">
+        <view class="voice-ripple" />
+        <view class="voice-icon">🎤</view>
+      </view>
+      <text class="voice-tip">松开发送</text>
+      <text class="voice-cancel-tip">上滑取消</text>
+    </view>
+  </view>
+
+</view>

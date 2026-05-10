@@ -1,0 +1,161 @@
+.input-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  box-shadow: 0 -2rpx 16rpx rgba(59, 52, 70, 0.06);
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 50;
+  transition: transform 0.25s ease;
+}
+
+.bar-inner {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx 16rpx;
+  gap: 16rpx;
+  min-height: 108rpx;
+}
+
+/* ── 图标按钮 ─────────────────────────────────────────────── */
+
+.icon-btn {
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.icon-btn:active {
+  background: rgba(142, 122, 181, 0.1);
+}
+
+.icon-text {
+  font-size: 44rpx;
+  line-height: 1;
+}
+
+.plus {
+  font-size: 48rpx;
+  color: #7B7385;
+  font-weight: 300;
+}
+
+/* ── 文字输入框 ──────────────────────────────────────────── */
+
+.input-wrap {
+  flex: 1;
+  background: #F4EEF6;
+  border-radius: 40rpx;
+  padding: 0 28rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+}
+
+.text-input {
+  width: 100%;
+  font-size: 28rpx;
+  color: #3B3446;
+  line-height: 72rpx;
+  background: transparent;
+}
+
+/* ── 语音按钮 ────────────────────────────────────────────── */
+
+.voice-btn {
+  flex: 1;
+  height: 72rpx;
+  background: #F4EEF6;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.voice-btn.pressing {
+  background: #E7C8D5;
+  transform: scale(0.97);
+}
+
+.voice-btn-text {
+  font-size: 28rpx;
+  color: #7B7385;
+}
+
+/* ── 发送按钮 ────────────────────────────────────────────── */
+
+.send-btn {
+  width: auto;
+  padding: 0 28rpx;
+  height: 72rpx;
+  border-radius: 40rpx;
+  background: linear-gradient(135deg, #8E7AB5 0%, #A990CC 100%);
+  box-shadow: 0 4rpx 16rpx rgba(142, 122, 181, 0.35);
+}
+
+.send-btn:active {
+  opacity: 0.85;
+  background: linear-gradient(135deg, #8E7AB5 0%, #A990CC 100%);
+}
+
+.send-text {
+  font-size: 28rpx;
+  color: #FFFFFF;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ── 扩展面板 ────────────────────────────────────────────── */
+
+.extra-panel {
+  padding: 24rpx 32rpx 16rpx;
+  border-top: 1rpx solid rgba(142, 122, 181, 0.1);
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20rpx); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.extra-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16rpx;
+}
+
+.extra-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  padding: 24rpx 0;
+}
+
+.extra-item:active .extra-icon {
+  transform: scale(0.9);
+}
+
+.extra-icon {
+  width: 104rpx;
+  height: 104rpx;
+  background: #F4EEF6;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44rpx;
+  transition: transform 0.1s;
+}
+
+.extra-label {
+  font-size: 22rpx;
+  color: #7B7385;
+}

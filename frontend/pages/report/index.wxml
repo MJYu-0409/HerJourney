@@ -1,0 +1,114 @@
+<scroll-view class="page" scroll-y enhanced bounces>
+
+  <!-- ── 症状趋势卡 ────────────────────────────────────────────── -->
+  <view class="section-card">
+
+    <!-- 标题行 + 症状选择按钮 -->
+    <view class="card-header-row">
+      <text class="card-title">症状趋势</text>
+      <view class="symptom-btn" bindtap="openSymptomPicker">
+        <text class="symptom-btn-text">{{symptomBtnLabel}}</text>
+        <text class="symptom-btn-arrow">∨</text>
+      </view>
+    </view>
+
+    <!-- 时间范围 Tabs -->
+    <view class="time-tabs">
+      <view
+        wx:for="{{TIME_RANGES}}"
+        wx:key="days"
+        class="time-tab {{selectedDays === item.days ? 'active' : ''}}"
+        bindtap="onTimeRange"
+        data-days="{{item.days}}"
+      >{{item.label}}</view>
+    </view>
+
+    <!-- 自定义：起始日期选择器 -->
+    <view class="custom-row" wx:if="{{selectedDays === -1}}">
+      <text class="custom-label">从</text>
+      <picker mode="date" value="{{customStart}}" bindchange="onCustomStart" end="{{todayStr}}">
+        <view class="date-pick-btn">{{customStart || '选择日期'}}</view>
+      </picker>
+      <text class="custom-label">至今天</text>
+    </view>
+
+    <!-- 图例 -->
+    <view class="legend-row" wx:if="{{chartSeries.length && !chartLoading}}">
+      <view wx:for="{{chartSeries}}" wx:key="key" class="legend-item">
+        <view class="legend-dot" style="background:{{item.color}}" />
+        <text class="legend-name">{{item.name}}</text>
+      </view>
+    </view>
+
+    <!-- 折线图 -->
+    <line-chart series="{{chartSeries}}" loading="{{chartLoading}}" />
+
+    <!-- 空数据提示 -->
+    <view class="empty-tip" wx:if="{{!chartLoading && !chartSeries.length}}">
+      <text>该时段暂无打卡数据，快去每日打卡吧~</text>
+    </view>
+
+  </view>
+
+  <!-- ── AI 解读卡 ──────────────────────────────────────────────── -->
+  <view class="ai-card section-card">
+
+    <view class="ai-card-header">
+      <view class="ai-badge">AI 发现</view>
+    </view>
+
+    <!-- 加载中 -->
+    <view class="typing-wrap" wx:if="{{aiLoading}}">
+      <view class="typing-dots">
+        <view class="dot dot-1" />
+        <view class="dot dot-2" />
+        <view class="dot dot-3" />
+      </view>
+      <text class="typing-hint">AI 解读生成中，请稍候…</text>
+    </view>
+
+    <!-- 解读文字 -->
+    <text class="ai-content" wx:if="{{!aiLoading && interpretation}}" user-select>{{interpretation}}</text>
+
+    <!-- 暂无内容 -->
+    <text class="ai-empty" wx:if="{{!aiLoading && !interpretation}}">选择症状并生成图表后，AI 将为你提供专属解读。</text>
+
+    <!-- 重新生成按钮 -->
+    <view
+      class="regen-btn"
+      wx:if="{{conditionsChanged && !aiLoading && chartSeries.length}}"
+      bindtap="regenerate"
+    >
+      <text class="regen-icon">✨</text>
+      <text>重新生成解读</text>
+    </view>
+
+  </view>
+
+  <view style="height:60rpx" />
+
+</scroll-view>
+
+<!-- ── 症状选择浮层 ───────────────────────────────────────────── -->
+<view class="mask" wx:if="{{showSymptomPicker}}" bindtap="closeSymptomPicker" />
+
+<view class="picker-sheet {{showSymptomPicker ? 'show' : ''}}">
+  <view class="picker-handle" />
+  <view class="picker-header">
+    <text class="picker-title">选择要显示的症状</text>
+    <view class="picker-confirm" bindtap="confirmSymptoms">确定</view>
+  </view>
+  <scroll-view scroll-y class="picker-body">
+    <view class="symptom-grid">
+      <view
+        wx:for="{{pickerSymptoms}}"
+        wx:key="key"
+        class="symptom-chip {{item.selected ? 'selected' : ''}}"
+        bindtap="toggleSymptom"
+        data-key="{{item.key}}"
+      >
+        {{item.name}}
+      </view>
+    </view>
+  </scroll-view>
+</view>
