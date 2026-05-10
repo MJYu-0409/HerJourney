@@ -2,7 +2,7 @@ import { api } from '../../utils/api'
 
 // Consistent color per symptom key
 const SYMPTOM_COLORS = {
-  hot_flash:           '#8E7AB5',
+  hot_flash:           '#7B6CA0',
   sleep_disorder:      '#7EC8E3',
   anxiety:             '#E8A0B4',
   dizziness:           '#F5C842',
@@ -25,7 +25,7 @@ const SYMPTOM_COLORS = {
   libido_change:       '#D4A8B8',
   menstrual_change:    '#B8C8E8',
 }
-const FALLBACK_COLORS = ['#8E7AB5','#7EC8E3','#E8A0B4','#F5C842','#90C8A0','#F0A080']
+const FALLBACK_COLORS = ['#7B6CA0','#7EC8E3','#E8A0B4','#F5C842','#90C8A0','#F0A080']
 
 function colorFor(key, idx) {
   return SYMPTOM_COLORS[key] || FALLBACK_COLORS[idx % FALLBACK_COLORS.length]

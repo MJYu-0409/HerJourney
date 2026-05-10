@@ -207,7 +207,7 @@ Component({
       // ── Tooltip indicator line ────────────────────────────────────────────
       if (this._tipX !== undefined) {
         ctx.save()
-        ctx.strokeStyle = 'rgba(142,122,181,0.45)'
+        ctx.strokeStyle = 'rgba(123,108,160,0.45)'
         ctx.lineWidth = 1.5
         ctx.setLineDash([4, 4])
         ctx.beginPath()

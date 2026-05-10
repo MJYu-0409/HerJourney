@@ -42,7 +42,7 @@
   width: 112rpx;
   height: 112rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #C6B4E1 0%, #E7C8D5 100%);
+  background: linear-gradient(135deg, #B4A5CC 0%, #E7C8D5 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,7 +68,7 @@
   position: absolute;
   inset: -8rpx;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(198,180,225,0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(180,165,204,0.3) 0%, transparent 70%);
 }
 
 .avatar-edit-badge {
@@ -171,7 +171,7 @@
 .stat-divider {
   width: 2rpx;
   height: 56rpx;
-  background: rgba(142, 122, 181, 0.15);
+  background: rgba(123, 108, 160, 0.15);
 }
 
 /* ── Year in Pixels ───────────────────────────────────────────────────────── */
@@ -208,7 +208,7 @@
   justify-content: center;
   border-radius: 50%;
 }
-.year-btn:active { background: rgba(142,122,181,0.2); }
+.year-btn:active { background: rgba(123,108,160,0.2); }
 .year-btn text { font-size: 36rpx; color: var(--color-brand); }
 
 .year-text {
@@ -373,10 +373,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 36rpx 32rpx;
-  border-bottom: 1rpx solid rgba(142,122,181,0.08);
+  border-bottom: 1rpx solid rgba(123,108,160,0.08);
 }
 .setting-item:last-child { border-bottom: none; }
-.setting-item:active { background: rgba(142,122,181,0.05); }
+.setting-item:active { background: rgba(123,108,160,0.05); }
 
 .setting-left {
   display: flex;

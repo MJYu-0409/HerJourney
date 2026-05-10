@@ -16,7 +16,7 @@ const MOCK_POSTS = [
     title: "复工了，但学会了说不",
     content: "复工两周了。\n\n有同事让我帮一个项目，我拒绝了。\n\n以前从来不会拒绝的。\n\n现在知道了，说\"不\"不会死，但硬撑会。\n\n身体给的信号，得听。",
     emotion: "轻松中带点硬气",
-    emotionColor: "#8E7AB5",
+    emotionColor: "#7B6CA0",
     symptoms: ["恢复阶段", "焦虑"],
     stage: "围绝经期",
     tags: ["#复工", "#学会拒绝", "#恢复"],

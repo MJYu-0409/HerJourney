@@ -14,7 +14,7 @@
   position: absolute;
   background: #FFFFFF;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(142, 122, 181, 0.2);
+  box-shadow: 0 4px 20px rgba(123, 108, 160, 0.2);
   padding: 10px 14px;
   min-width: 130px;
   z-index: 10;
@@ -24,7 +24,7 @@
 .tip-date {
   font-size: 13px;
   font-weight: 600;
-  color: #4A3B78;
+  color: #5A4A80;
   margin-bottom: 8px;
 }
 
@@ -51,7 +51,7 @@
 .tip-val {
   font-size: 12px;
   font-weight: 600;
-  color: #4A3B78;
+  color: #5A4A80;
   min-width: 14px;
   text-align: right;
 }

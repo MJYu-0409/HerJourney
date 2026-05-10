@@ -39,7 +39,7 @@
 }
 
 .avatar-default {
-  background: linear-gradient(135deg, #C6B4E1 0%, #E7C8D5 100%);
+  background: linear-gradient(135deg, #B4A5CC 0%, #E7C8D5 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,7 +79,7 @@
   display: flex;
   align-items: center;
   padding: 28rpx 32rpx;
-  border-bottom: 1rpx solid rgba(142,122,181,0.08);
+  border-bottom: 1rpx solid rgba(123,108,160,0.08);
 }
 .form-item:last-child { border-bottom: none; }
 
@@ -134,7 +134,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8rpx 24rpx rgba(142,122,181,0.3);
+  box-shadow: 0 8rpx 24rpx rgba(123,108,160,0.3);
 }
 .save-btn:active { opacity: 0.9; }
 .save-btn.disabled {
