@@ -417,31 +417,3 @@
 }
 .submit-btn:active { opacity: 0.85; }
 .submit-btn.submitting { opacity: 0.6; }
-
-/* ── Dark Theme ────────────────────────────────────────────────────────────── */
-
-.dark .greeting-card {
-  background: linear-gradient(135deg, #4A3B78 0%, #6B5A96 100%);
-}
-
-.dark .score-row {
-  background: var(--bg-secondary);
-}
-
-.dark .weekly-card {
-  border-color: rgba(142,122,181,0.2);
-}
-
-.dark .badge-done {
-  background: rgba(144,200,160,0.15);
-  color: #7AC08A;
-}
-
-.dark .badge-todo {
-  background: rgba(245,200,66,0.15);
-  color: #D4A830;
-}
-
-.dark .weekly-done-tip {
-  color: #7AC08A;
-}

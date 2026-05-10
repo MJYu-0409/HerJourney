@@ -90,8 +90,3 @@
   active-opacity: 0.85;
 }
 
-.hint {
-  font-size: var(--font-xs);
-  color: var(--text-hint);
-  letter-spacing: 2rpx;
-}

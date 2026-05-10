@@ -1,4 +1,4 @@
-<scroll-view class="page {{isDark ? 'dark' : ''}}" scroll-y enhanced bounces>
+<scroll-view class="page" scroll-y enhanced bounces>
 
   <!-- ── 头部问候 ─────────────────────────────────────────────── -->
   <view class="greeting-card">

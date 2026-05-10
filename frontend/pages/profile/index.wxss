@@ -7,29 +7,6 @@
   display: block;
 }
 
-/* 深夜模式覆盖 */
-.dark .header-card {
-  background: var(--bg-card);
-}
-.dark .username,
-.dark .stat-num,
-.dark .card-title,
-.dark .quick-label,
-.dark .setting-label,
-.dark .year-text {
-  color: var(--text-primary);
-}
-.dark .user-stage,
-.dark .stat-label,
-.dark .legend-text,
-.dark .month-label-cell,
-.dark .day-label {
-  color: var(--text-secondary);
-}
-.dark .stat-divider { background: #3D3550; }
-.dark .setting-item { border-bottom-color: #3D3550; }
-.dark .setting-arrow { color: #6B6080; }
-
 /* ── 卡片通用 ─────────────────────────────────────────────────────────────── */
 
 .header-card,

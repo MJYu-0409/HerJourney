@@ -1,4 +1,4 @@
-<view class="page {{isDark ? 'dark' : ''}}">
+<view class="page">
 
   <!-- ── 顶部 AI 洞察横幅 ────────────────────────────────────── -->
   <view class="insight-banner" wx:if="{{insightText}}">
@@ -19,7 +19,7 @@
     <view class="empty-state" wx:if="{{messages.length === 0 && !loading}}">
       <view class="ai-avatar-wrap">
         <view class="ai-avatar">
-          <text class="ai-avatar-text">她</text>
+          <text class="ai-avatar-text">伴</text>
         </view>
         <view class="ai-avatar-glow" />
       </view>
@@ -51,7 +51,7 @@
       >
         <!-- AI 头像 -->
         <view class="ai-avatar-sm" wx:if="{{item.role === 'assistant'}}">
-          <text>她</text>
+          <text>伴</text>
         </view>
 
         <!-- 气泡 -->
@@ -63,7 +63,7 @@
 
       <!-- 打字动效 -->
       <view class="msg-row assistant" wx:if="{{loading}}">
-        <view class="ai-avatar-sm"><text>她</text></view>
+        <view class="ai-avatar-sm"><text>伴</text></view>
         <view class="bubble assistant typing">
           <view class="typing-dots">
             <view class="dot dot-1" />

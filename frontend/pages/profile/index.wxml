@@ -1,4 +1,4 @@
-<scroll-view class="page {{isDark ? 'dark' : ''}}" scroll-y enhanced bounces>
+<scroll-view class="page" scroll-y enhanced bounces>
 
   <!-- ── 用户信息头部 ──────────────────────────────────────────── -->
   <view class="header-card">
@@ -10,9 +10,6 @@
       <view class="user-info">
         <text class="username">{{userInfo.nickname}}</text>
         <text class="user-stage">{{userInfo.stage}}</text>
-      </view>
-      <view class="theme-toggle" bindtap="toggleTheme">
-        <text class="theme-icon">{{isDark ? '☀️' : '🌙'}}</text>
       </view>
     </view>
 

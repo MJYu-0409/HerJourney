@@ -1,5 +1,4 @@
 import { api } from '../../utils/api'
-const theme = require('../../utils/theme')
 
 // ── 颜色配置 ──────────────────────────────────────────────────────────────────
 
@@ -111,7 +110,6 @@ Page({
     selectedYear: new Date().getFullYear(),
     weeks: [],
     monthSpans: [],
-    isDark: false,
     LEGEND,
     quickActions: QUICK_ACTIONS,
     settingItems: SETTING_ITEMS,
@@ -124,7 +122,6 @@ Page({
   },
 
   onShow() {
-    theme.syncPageTheme(this)
     this._refreshStats()
   },
 
@@ -198,14 +195,6 @@ Page({
       ? ['', '很差', '较差', '一般', '较好', '很好'][day.score]
       : '未打卡'
     wx.showToast({ title: `${day.dateStr}  ${label}`, icon: 'none', duration: 1800 })
-  },
-
-  // ── 深夜模式 ──────────────────────────────────────────────────────────────
-
-  toggleTheme() {
-    const isDark = !this.data.isDark
-    this.setData({ isDark })
-    theme.setTheme(isDark)
   },
 
   // ── 快捷功能 ──────────────────────────────────────────────────────────────

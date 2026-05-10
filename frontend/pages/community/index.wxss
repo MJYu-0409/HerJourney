@@ -359,14 +359,3 @@
   color: var(--text-hint);
   margin-top: 4rpx;
 }
-
-/* ── Dark Theme ────────────────────────────────────────────────────────────── */
-
-.dark .symptom-tag {
-  background: #3D3550;
-  color: #B8B0C5;
-}
-
-.dark .post-card::before {
-  opacity: 0.15;
-}

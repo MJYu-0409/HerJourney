@@ -14,6 +14,5 @@
     <view class="enter-btn btn-primary" bindtap="onEnter">
       <text>开始陪伴</text>
     </view>
-    <text class="hint">围绝经期女性的温暖空间</text>
   </view>
 </view>

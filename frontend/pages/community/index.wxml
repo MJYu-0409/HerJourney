@@ -1,4 +1,4 @@
-<view class="community-page {{isDark ? 'dark' : ''}}">
+<view class="community-page">
   <!-- Header -->
   <view class="header">
     <text class="header-title">她们的故事</text>

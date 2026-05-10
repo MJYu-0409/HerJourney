@@ -1,5 +1,3 @@
-const theme = require('../../utils/theme')
-
 const MOCK_POSTS = [
   {
     id: "post-10004",
@@ -178,16 +176,11 @@ Page({
     activeTag: '全部',
     tags: ['全部', '睡眠', '情绪波动', '潮热', '恢复', '就医', '工作'],
     expandedPosts: {},
-    searchKeyword: '',
-    isDark: false,
+    searchKeyword: ''
   },
 
   onLoad() {
     this.loadPosts();
-  },
-
-  onShow() {
-    theme.syncPageTheme(this)
   },
 
   loadPosts() {
