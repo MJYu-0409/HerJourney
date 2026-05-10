@@ -1,4 +1,9 @@
-import { api } from '../../utils/api'
+import { api, BASE } from '../../utils/api'
+
+function fullAvatar(url) {
+  if (!url) return ''
+  return url.startsWith('http') ? url : BASE + url
+}
 
 // ── 颜色配置 ──────────────────────────────────────────────────────────────────
 
@@ -29,9 +34,9 @@ const QUICK_ACTIONS = [
 ]
 
 const SETTING_ITEMS = [
-  { icon: '⚙️', label: '设置',      action: 'settings' },
-  { icon: '❓', label: '帮助与反馈', action: 'help' },
-  { icon: '🚪', label: '退出登录',  action: 'logout', danger: true },
+  { icon: '/assets/icons/settings.svg', label: '设置',      action: 'settings' },
+  { icon: '/assets/icons/help.svg',    label: '帮助与反馈', action: 'help' },
+  { icon: '/assets/icons/logout.svg',  label: '退出登录',  action: 'logout', danger: true },
 ]
 
 // ── 像素网格计算 ──────────────────────────────────────────────────────────────
@@ -105,12 +110,11 @@ function buildYearGrid(year, scoreMap) {
 
 Page({
   data: {
-    userInfo: { nickname: '小桃', stage: '围绝经期' },
+    userInfo: { nickname: '小桃', stage: '', avatar_url: '' },
     stats: { totalDays: 0, currentStreak: 0, avgScore: null },
     selectedYear: new Date().getFullYear(),
     weeks: [],
     monthSpans: [],
-    isDark: false,
     LEGEND,
     quickActions: QUICK_ACTIONS,
     settingItems: SETTING_ITEMS,
@@ -144,6 +148,7 @@ Page({
         userInfo: {
           nickname: info.nickname || '姐妹',
           stage: stageMap[info.menopause_stage] || info.menopause_stage,
+          avatar_url: fullAvatar(info.avatar_url) || '',
         },
       })
     } catch (_) {}
@@ -198,15 +203,8 @@ Page({
     wx.showToast({ title: `${day.dateStr}  ${label}`, icon: 'none', duration: 1800 })
   },
 
-  // ── 深夜模式 ──────────────────────────────────────────────────────────────
-
-  toggleTheme() {
-    const isDark = !this.data.isDark
-    this.setData({ isDark })
-    wx.setNavigationBarColor({
-      frontColor: isDark ? '#ffffff' : '#000000',
-      backgroundColor: isDark ? '#1F1B2E' : '#FAF7F4',
-    })
+  goEditProfile() {
+    wx.navigateTo({ url: '/pages/profile/edit' })
   },
 
   // ── 快捷功能 ──────────────────────────────────────────────────────────────

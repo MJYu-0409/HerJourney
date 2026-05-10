@@ -5,6 +5,7 @@
     "pages/daily/index",
     "pages/community/index",
     "pages/profile/index",
+    "pages/profile/edit/index",
     "pages/report/index"
   ],
   "tabBar": {

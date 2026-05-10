@@ -3,6 +3,8 @@
 const BASE_URL = 'http://127.0.0.1:5000'
 const MOCK_USER_ID = 'mock-user-001'
 
+export const BASE = BASE_URL
+
 // AI 接口响应慢，单独给长超时；普通接口 10s 足够
 const TIMEOUT_AI = 120000
 const TIMEOUT_DEFAULT = 15000
@@ -50,6 +52,25 @@ export const api = {
 
   // User
   getUserMe: () => request('GET', '/api/user/me'),
+  updateUser: (body) => request('PUT', '/api/user/me', body),
+  uploadAvatar: (filePath) => {
+    return new Promise((resolve, reject) => {
+      wx.uploadFile({
+        url: `${BASE_URL}/api/user/avatar`,
+        filePath,
+        name: 'file',
+        header: { 'X-User-Id': MOCK_USER_ID },
+        success(res) {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            resolve(JSON.parse(res.data))
+          } else {
+            reject(res.data)
+          }
+        },
+        fail: reject,
+      })
+    })
+  },
 
   // Profile
   getStats: () => request('GET', '/api/profile/stats'),

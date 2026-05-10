@@ -3,7 +3,7 @@
 
     <!-- 语音 / 键盘 切换 -->
     <view class="icon-btn" bindtap="toggleMode" wx:if="{{!hasText}}">
-      <text class="icon-text">{{mode === 'voice' ? '⌨️' : '🎤'}}</text>
+      <text class="icon-text">{{mode === 'text' ? '⌨️' : '🎤'}}</text>
     </view>
 
     <!-- 文字输入框 -->

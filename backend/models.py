@@ -17,6 +17,7 @@ class User(Base):
     id = Column(String(36), primary_key=True, default=_uuid)
     openid = Column(String(64), unique=True, nullable=True)
     nickname = Column(String(50), default="匿名姐妹")
+    avatar_url = Column(String(255), nullable=True)
     birth_year = Column(SmallInteger, nullable=True)
     menopause_stage = Column(String(20), default="unknown")
     created_at = Column(DateTime, default=datetime.utcnow)

@@ -7,33 +7,6 @@
   display: block;
 }
 
-/* 深夜模式覆盖 */
-.page.dark {
-  background: #1F1B2E;
-}
-.page.dark .header-card,
-.page.dark .section-card {
-  background: #2B243A;
-}
-.page.dark .username,
-.page.dark .stat-num,
-.page.dark .card-title,
-.page.dark .quick-label,
-.page.dark .setting-label,
-.page.dark .year-text {
-  color: #F4EEF6;
-}
-.page.dark .user-stage,
-.page.dark .stat-label,
-.page.dark .legend-text,
-.page.dark .month-label-cell,
-.page.dark .day-label {
-  color: #B8B0C5;
-}
-.page.dark .stat-divider { background: #3D3550; }
-.page.dark .setting-item { border-bottom-color: #3D3550; }
-.page.dark .setting-arrow { color: #6B6080; }
-
 /* ── 卡片通用 ─────────────────────────────────────────────────────────────── */
 
 .header-card,
@@ -67,6 +40,14 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  overflow: hidden;
+}
+.avatar:active { opacity: 0.85; }
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 .avatar-char {
@@ -84,14 +65,55 @@
   background: radial-gradient(circle, rgba(198,180,225,0.3) 0%, transparent 70%);
 }
 
+.avatar-edit-badge {
+  position: absolute;
+  right: 2rpx;
+  bottom: 2rpx;
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background: var(--color-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid #fff;
+  z-index: 2;
+}
+
+.avatar-edit-icon {
+  font-size: 18rpx;
+  color: #fff;
+}
+
 .user-info { flex: 1; }
 
+.user-name-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 8rpx;
+}
+
 .username {
-  display: block;
   font-size: var(--font-md);
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 8rpx;
+}
+
+.edit-btn {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edit-btn:active { opacity: 0.7; }
+
+.edit-icon {
+  font-size: 22rpx;
+  color: var(--text-secondary);
 }
 
 .user-stage {
@@ -356,7 +378,7 @@
   gap: 24rpx;
 }
 
-.setting-icon { font-size: 40rpx; line-height: 1; }
+.setting-icon-img { width: 40rpx; height: 40rpx; }
 
 .setting-label {
   font-size: var(--font-base);

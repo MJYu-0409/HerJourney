@@ -10,10 +10,17 @@ from constants import SYMPTOM_KEYS
 class UserOut(BaseModel):
     id: str
     nickname: str
+    avatar_url: Optional[str] = None
     menopause_stage: str
     birth_year: Optional[int] = None
 
     model_config = {"from_attributes": True}
+
+
+class UserUpdate(BaseModel):
+    nickname: Optional[str] = None
+    birth_year: Optional[int] = None
+    menopause_stage: Optional[str] = None
 
 
 # ── Survey ────────────────────────────────────────────────────────────────────
