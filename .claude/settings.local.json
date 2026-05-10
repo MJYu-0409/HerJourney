@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/d/HerJourney/venv/Scripts/python --version)",
+      "Bash(git init *)",
+      "Bash(git remote *)"
+    ]
+  }
+}
