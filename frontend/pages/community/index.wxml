@@ -1,5 +1,140 @@
-<view class="placeholder">
-  <text class="ph-emoji">🌸</text>
-  <text class="ph-title">社区</text>
-  <text class="ph-sub">即将上线</text>
+<view class="community-page">
+  <!-- Header -->
+  <view class="header">
+    <text class="header-title">她们的故事</text>
+    <text class="header-sub">原来，不只有我这样</text>
+  </view>
+
+  <!-- Search Bar -->
+  <view class="search-wrap">
+    <view class="search-bar">
+      <text class="search-icon">⌕</text>
+      <input
+        class="search-input"
+        type="text"
+        placeholder="搜索故事、症状、心情..."
+        placeholder-class="search-placeholder"
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+        confirm-type="search"
+        bindconfirm="onSearchConfirm"
+      />
+      <view
+        wx:if="{{searchKeyword}}"
+        class="search-clear"
+        bindtap="onSearchClear"
+      >
+        <text class="clear-icon">×</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Filter Tags -->
+  <scroll-view class="tag-bar" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="tag-list">
+      <view
+        wx:for="{{tags}}"
+        wx:key="*this"
+        class="filter-tag {{activeTag === item ? 'active' : ''}}"
+        data-tag="{{item}}"
+        bindtap="onTagTap"
+      >
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- Post List -->
+  <view class="post-list">
+    <!-- Empty State -->
+    <view wx:if="{{filteredPosts.length === 0}}" class="empty-state">
+      <text class="empty-emoji">☁</text>
+      <text class="empty-text">{{searchKeyword ? '没有找到相关的故事' : '还没有故事'}}</text>
+      <text wx:if="{{searchKeyword}}" class="empty-sub">换个关键词试试</text>
+    </view>
+
+    <view
+      wx:for="{{filteredPosts}}"
+      wx:key="id"
+      class="post-card"
+    >
+      <!-- Card Header -->
+      <view class="card-header">
+        <view class="emotion-tag" style="background: {{item.emotionColor}}20; color: {{item.emotionColor}};">
+          <text class="emotion-dot" style="background: {{item.emotionColor}};"></text>
+          <text class="emotion-text">{{item.emotion}}</text>
+        </view>
+        <text class="post-time">{{item.timeAgo}}</text>
+      </view>
+
+      <!-- Title -->
+      <text class="post-title">{{item.title}}</text>
+
+      <!-- Content -->
+      <view class="post-content-wrap">
+        <text class="post-content {{expandedPosts[item.id] ? 'expanded' : ''}}">{{item.content}}</text>
+        <text
+          wx:if="{{item.content.length > 80}}"
+          class="expand-btn"
+          data-id="{{item.id}}"
+          bindtap="onExpandTap"
+        >{{expandedPosts[item.id] ? '收起' : '展开'}}</text>
+      </view>
+
+      <!-- Symptoms & Stage -->
+      <view class="meta-row">
+        <view class="stage-tag">{{item.stage}}</view>
+        <view wx:for="{{item.symptoms}}" wx:for-item="sym" wx:key="*this" class="symptom-tag">{{sym}}</view>
+      </view>
+
+      <!-- Tags -->
+      <view class="tag-row" wx:if="{{item.tags.length}}">
+        <text wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="hash-tag">{{tag}}</text>
+      </view>
+
+      <!-- Interaction Bar -->
+      <view class="interaction-bar">
+        <view
+          class="action-btn {{item.resonated ? 'active' : ''}}"
+          data-id="{{item.id}}"
+          data-index="{{index}}"
+          bindtap="onResonateTap"
+        >
+          <view class="action-icon resonate-icon">
+            <text class="icon-symbol">{{item.resonated ? '◕' : '○'}}</text>
+          </view>
+          <text class="action-text">{{item.resonated ? '已共鸣' : '共鸣'}}</text>
+          <text wx:if="{{item.resonateCount}}" class="action-count">{{item.resonateCount}}</text>
+        </view>
+
+        <view
+          class="action-btn"
+          data-id="{{item.id}}"
+          data-index="{{index}}"
+          bindtap="onRespondTap"
+        >
+          <view class="action-icon respond-icon">
+            <text class="icon-symbol">~</text>
+          </view>
+          <text class="action-text">回应</text>
+          <text wx:if="{{item.responses}}" class="action-count">{{item.responses}}</text>
+        </view>
+
+        <view
+          class="action-btn {{item.stayed ? 'active' : ''}}"
+          data-id="{{item.id}}"
+          data-index="{{index}}"
+          bindtap="onStayTap"
+        >
+          <view class="action-icon stay-icon">
+            <text class="icon-symbol">{{item.stayed ? '◈' : '◇'}}</text>
+          </view>
+          <text class="action-text">{{item.stayed ? '已留下' : '留下来'}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Bottom Safe Area -->
+  <view class="safe-bottom"></view>
 </view>
