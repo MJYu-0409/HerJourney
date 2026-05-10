@@ -1,6 +1,6 @@
 // getApp() 不能在模块顶层调用（App 尚未初始化）
 // 改为在每次请求时懒获取
-const BASE_URL = 'http://127.0.0.1:8000'
+const BASE_URL = 'http://127.0.0.1:5000'
 const MOCK_USER_ID = 'mock-user-001'
 
 // AI 接口响应慢，单独给长超时；普通接口 10s 足够
@@ -22,7 +22,7 @@ function request(method, path, data, timeout = TIMEOUT_DEFAULT) {
         if (res.statusCode >= 200 && res.statusCode < 300) {
           resolve(res.data)
         } else {
-          console.error(`[API] ${method} ${path} →`, res.statusCode, res.data)
+          console.error(`[API] ${method} ${path} →`, res.statusCode, JSON.stringify(res.data))
           reject(res.data)
         }
       },

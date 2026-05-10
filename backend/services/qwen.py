@@ -1,3 +1,4 @@
+import httpx
 from openai import OpenAI
 from config import QWEN_API_KEY, QWEN_BASE_URL, QWEN_MODEL
 
@@ -7,7 +8,11 @@ _client: OpenAI | None = None
 def _get_client() -> OpenAI:
     global _client
     if _client is None:
-        _client = OpenAI(api_key=QWEN_API_KEY, base_url=QWEN_BASE_URL)
+        _client = OpenAI(
+            api_key=QWEN_API_KEY,
+            base_url=QWEN_BASE_URL,
+            http_client=httpx.Client(proxy=None),  # bypass system proxy to avoid SDK TypeError
+        )
     return _client
 
 

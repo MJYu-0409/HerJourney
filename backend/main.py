@@ -202,7 +202,7 @@ def _seed_mock_data():
         db.add(mock_user)
 
         # Load 90-day sample surveys from JSON file
-        sample_path = os.path.join(os.path.dirname(__file__), "..", "sample", "mock_data", "survey_enhanced_90d.json")
+        sample_path = os.path.join(os.path.dirname(__file__), "..", "mock_data", "survey_enhanced_90d.json")
         if os.path.exists(sample_path):
             _seed_surveys_from_json(db, sample_path)
         else:
@@ -262,3 +262,14 @@ def _seed_mock_data():
 @app.get("/")
 def root():
     return {"message": "HerJourney API is running", "docs": "/docs"}
+
+
+@app.get("/api/diag/qwen")
+def diag_qwen():
+    """Temporary endpoint to test Qwen API connectivity."""
+    try:
+        from services.qwen import chat_completion
+        result = chat_completion([{"role": "user", "content": "说\"ok\""}], max_tokens=10)
+        return {"status": "ok", "response": result}
+    except Exception as e:
+        return {"status": "error", "error": type(e).__name__, "message": str(e)}
