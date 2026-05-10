@@ -67,8 +67,8 @@
 
 .avatar-edit-badge {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 2rpx;
+  bottom: 2rpx;
   width: 36rpx;
   height: 36rpx;
   border-radius: 50%;
