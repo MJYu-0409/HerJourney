@@ -1,4 +1,5 @@
 import { api } from '../../utils/api'
+const theme = require('../../utils/theme')
 
 const DEFAULT_TOPICS = [
   { emoji: '🔥', text: '潮热盗汗总是突然来袭，怎么应对？' },
@@ -24,6 +25,7 @@ Page({
     scrollAnchor: '',
     insightText: '',
     defaultTopics: DEFAULT_TOPICS,
+    isDark: false,
   },
 
   onLoad() {
@@ -32,6 +34,7 @@ Page({
   },
 
   onShow() {
+    theme.syncPageTheme(this)
     // 键盘收起时重置布局
     wx.hideKeyboard()
   },

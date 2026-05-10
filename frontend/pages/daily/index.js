@@ -1,4 +1,5 @@
 import { api } from '../../utils/api'
+const theme = require('../../utils/theme')
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -124,6 +125,8 @@ function getISOWeekKey() {
 
 Page({
   data: {
+    isDark: false,
+
     // Header
     todayLabel: todayFormatted(),
     greetingText: greeting(),
@@ -168,6 +171,10 @@ Page({
   onLoad() {
     this._checkWeekly()
     this._loadUserAndToday()
+  },
+
+  onShow() {
+    theme.syncPageTheme(this)
   },
 
   // ── Init ──────────────────────────────────────────────────────────────────

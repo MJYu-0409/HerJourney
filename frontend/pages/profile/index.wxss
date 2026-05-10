@@ -8,31 +8,27 @@
 }
 
 /* 深夜模式覆盖 */
-.page.dark {
-  background: #1F1B2E;
+.dark .header-card {
+  background: var(--bg-card);
 }
-.page.dark .header-card,
-.page.dark .section-card {
-  background: #2B243A;
+.dark .username,
+.dark .stat-num,
+.dark .card-title,
+.dark .quick-label,
+.dark .setting-label,
+.dark .year-text {
+  color: var(--text-primary);
 }
-.page.dark .username,
-.page.dark .stat-num,
-.page.dark .card-title,
-.page.dark .quick-label,
-.page.dark .setting-label,
-.page.dark .year-text {
-  color: #F4EEF6;
+.dark .user-stage,
+.dark .stat-label,
+.dark .legend-text,
+.dark .month-label-cell,
+.dark .day-label {
+  color: var(--text-secondary);
 }
-.page.dark .user-stage,
-.page.dark .stat-label,
-.page.dark .legend-text,
-.page.dark .month-label-cell,
-.page.dark .day-label {
-  color: #B8B0C5;
-}
-.page.dark .stat-divider { background: #3D3550; }
-.page.dark .setting-item { border-bottom-color: #3D3550; }
-.page.dark .setting-arrow { color: #6B6080; }
+.dark .stat-divider { background: #3D3550; }
+.dark .setting-item { border-bottom-color: #3D3550; }
+.dark .setting-arrow { color: #6B6080; }
 
 /* ── 卡片通用 ─────────────────────────────────────────────────────────────── */
 

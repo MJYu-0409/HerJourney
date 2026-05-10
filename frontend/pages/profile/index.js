@@ -1,4 +1,5 @@
 import { api } from '../../utils/api'
+const theme = require('../../utils/theme')
 
 // ── 颜色配置 ──────────────────────────────────────────────────────────────────
 
@@ -123,6 +124,7 @@ Page({
   },
 
   onShow() {
+    theme.syncPageTheme(this)
     this._refreshStats()
   },
 
@@ -203,10 +205,7 @@ Page({
   toggleTheme() {
     const isDark = !this.data.isDark
     this.setData({ isDark })
-    wx.setNavigationBarColor({
-      frontColor: isDark ? '#ffffff' : '#000000',
-      backgroundColor: isDark ? '#1F1B2E' : '#FAF7F4',
-    })
+    theme.setTheme(isDark)
   },
 
   // ── 快捷功能 ──────────────────────────────────────────────────────────────
