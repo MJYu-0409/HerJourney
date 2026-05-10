@@ -27,7 +27,7 @@ Page({
   },
 
   onLoad() {
-    wx.setNavigationBarTitle({ title: '问AI' })
+    wx.setNavigationBarTitle({ title: '小伴' })
     this._loadInsight()
   },
 

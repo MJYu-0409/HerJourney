@@ -21,13 +21,13 @@
       },
       {
         "pagePath": "pages/chat/index",
-        "text": "问AI",
+        "text": "小伴",
         "iconPath": "assets/icons/chat.png",
         "selectedIconPath": "assets/icons/chat-active.png"
       },
       {
         "pagePath": "pages/community/index",
-        "text": "社区",
+        "text": "她说",
         "iconPath": "assets/icons/community.png",
         "selectedIconPath": "assets/icons/community-active.png"
       },

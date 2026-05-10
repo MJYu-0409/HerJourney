@@ -23,9 +23,9 @@ const LEGEND = [
 const MONTH_NAMES = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
 
 const QUICK_ACTIONS = [
-  { icon: '📊', label: '生成报告', action: 'generateReport' },
-  { icon: '📋', label: '历史报告', action: 'historyReport' },
-  { icon: '⭐', label: '我的收藏', action: 'favorites' },
+  { icon: '/assets/icons/Generate.png', label: '生成报告', action: 'generateReport' },
+  { icon: '/assets/icons/Reports.png', label: '历史报告', action: 'historyReport' },
+  { icon: '/assets/icons/Favorites.png', label: '我的收藏', action: 'favorites' },
 ]
 
 const SETTING_ITEMS = [

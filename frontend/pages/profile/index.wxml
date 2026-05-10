@@ -109,7 +109,7 @@
         data-action="{{item.action}}"
       >
         <view class="quick-icon-wrap">
-          <text class="quick-icon">{{item.icon}}</text>
+          <image class="quick-icon-img" src="{{item.icon}}" mode="aspectFit" />
         </view>
         <text class="quick-label">{{item.label}}</text>
       </view>
