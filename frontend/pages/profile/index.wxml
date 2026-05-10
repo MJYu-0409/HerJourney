@@ -3,12 +3,21 @@
   <!-- ── 用户信息头部 ──────────────────────────────────────────── -->
   <view class="header-card">
     <view class="user-row">
-      <view class="avatar">
-        <text class="avatar-char">{{userInfo.nickname[0]}}</text>
+      <view class="avatar" bindtap="goEditProfile">
+        <image wx:if="{{userInfo.avatar_url}}" class="avatar-img" src="{{userInfo.avatar_url}}" mode="aspectFill" />
+        <text wx:else class="avatar-char">{{userInfo.nickname[0]}}</text>
         <view class="avatar-glow" />
+        <view class="avatar-edit-badge">
+          <text class="avatar-edit-icon">✎</text>
+        </view>
       </view>
       <view class="user-info">
-        <text class="username">{{userInfo.nickname}}</text>
+        <view class="user-name-row">
+          <text class="username">{{userInfo.nickname}}</text>
+          <view class="edit-btn" bindtap="goEditProfile">
+            <text class="edit-icon">✎</text>
+          </view>
+        </view>
         <text class="user-stage">{{userInfo.stage}}</text>
       </view>
     </view>

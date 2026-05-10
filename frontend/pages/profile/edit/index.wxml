@@ -1,0 +1,66 @@
+<view class="page">
+
+  <!-- ── 头像 ──────────────────────────────────────────────────── -->
+  <view class="section-card avatar-section">
+    <view class="avatar-wrap" bindtap="onChangeAvatar">
+      <view class="avatar {{userInfo.avatar_url ? '' : 'avatar-default'}}">
+        <image wx:if="{{userInfo.avatar_url}}" class="avatar-img" src="{{userInfo.avatar_url}}" mode="aspectFill" />
+        <text wx:else class="avatar-char">{{userInfo.nickname[0] || '?'}}</text>
+        <view class="avatar-overlay" wx:if="{{uploading}}">
+          <view class="spinner" />
+        </view>
+      </view>
+      <text class="avatar-hint">点击更换头像</text>
+    </view>
+  </view>
+
+  <!-- ── 表单 ──────────────────────────────────────────────────── -->
+  <view class="section-card form-card">
+    <view class="form-item">
+      <text class="form-label">昵称</text>
+      <input
+        class="form-input"
+        value="{{userInfo.nickname}}"
+        placeholder="请输入昵称"
+        maxlength="20"
+        bindinput="onNicknameInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">出生年份</text>
+      <input
+        class="form-input"
+        value="{{userInfo.birth_year || ''}}"
+        placeholder="如 1975"
+        type="number"
+        maxlength="4"
+        bindinput="onBirthYearInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">当前阶段</text>
+      <picker mode="selector" range="{{stageOptions}}" range-key="label" value="{{stageIndex}}" bindchange="onStageChange">
+        <view class="form-picker">
+          <text class="form-picker-text {{stageIndex >= 0 ? '' : 'placeholder'}}">
+            {{stageIndex >= 0 ? stageOptions[stageIndex].label : '请选择阶段'}}
+          </text>
+          <text class="form-arrow">›</text>
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- ── 保存按钮 ──────────────────────────────────────────────── -->
+  <view class="save-wrap">
+    <view class="save-btn {{saving ? 'disabled' : ''}}" bindtap="onSave">
+      <text wx:if="{{!saving}}">保存</text>
+      <view wx:else class="btn-spinner">
+        <view class="spinner" />
+      </view>
+    </view>
+  </view>
+
+  <view style="height:60rpx" />
+</view>

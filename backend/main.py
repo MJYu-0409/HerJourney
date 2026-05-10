@@ -50,6 +50,7 @@ def _migrate_columns():
     migrations = [
         "ALTER TABLE daily_surveys ADD COLUMN medication JSON",
         "ALTER TABLE daily_surveys ADD COLUMN weekly_data JSON",
+        "ALTER TABLE users ADD COLUMN avatar_url VARCHAR(255)",
     ]
     with engine.connect() as conn:
         for sql in migrations:

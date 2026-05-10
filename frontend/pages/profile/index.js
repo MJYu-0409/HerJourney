@@ -1,4 +1,9 @@
-import { api } from '../../utils/api'
+import { api, BASE } from '../../utils/api'
+
+function fullAvatar(url) {
+  if (!url) return ''
+  return url.startsWith('http') ? url : BASE + url
+}
 
 // ── 颜色配置 ──────────────────────────────────────────────────────────────────
 
@@ -105,7 +110,7 @@ function buildYearGrid(year, scoreMap) {
 
 Page({
   data: {
-    userInfo: { nickname: '小桃', stage: '' },
+    userInfo: { nickname: '小桃', stage: '', avatar_url: '' },
     stats: { totalDays: 0, currentStreak: 0, avgScore: null },
     selectedYear: new Date().getFullYear(),
     weeks: [],
@@ -143,6 +148,7 @@ Page({
         userInfo: {
           nickname: info.nickname || '姐妹',
           stage: stageMap[info.menopause_stage] || info.menopause_stage,
+          avatar_url: fullAvatar(info.avatar_url) || '',
         },
       })
     } catch (_) {}
@@ -195,6 +201,10 @@ Page({
       ? ['', '很差', '较差', '一般', '较好', '很好'][day.score]
       : '未打卡'
     wx.showToast({ title: `${day.dateStr}  ${label}`, icon: 'none', duration: 1800 })
+  },
+
+  goEditProfile() {
+    wx.navigateTo({ url: '/pages/profile/edit' })
   },
 
   // ── 快捷功能 ──────────────────────────────────────────────────────────────
