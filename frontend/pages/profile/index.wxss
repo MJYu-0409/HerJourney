@@ -356,7 +356,7 @@
   gap: 24rpx;
 }
 
-.setting-icon { font-size: 40rpx; line-height: 1; }
+.setting-icon-img { width: 40rpx; height: 40rpx; }
 
 .setting-label {
   font-size: var(--font-base);

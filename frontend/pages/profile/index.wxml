@@ -126,7 +126,7 @@
       data-action="{{item.action}}"
     >
       <view class="setting-left">
-        <text class="setting-icon">{{item.icon}}</text>
+        <image class="setting-icon-img" src="{{item.icon}}" mode="aspectFit" />
         <text class="setting-label">{{item.label}}</text>
       </view>
       <text class="setting-arrow">›</text>

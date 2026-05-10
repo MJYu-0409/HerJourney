@@ -29,9 +29,9 @@ const QUICK_ACTIONS = [
 ]
 
 const SETTING_ITEMS = [
-  { icon: '⚙️', label: '设置',      action: 'settings' },
-  { icon: '❓', label: '帮助与反馈', action: 'help' },
-  { icon: '🚪', label: '退出登录',  action: 'logout', danger: true },
+  { icon: '/assets/icons/settings.svg', label: '设置',      action: 'settings' },
+  { icon: '/assets/icons/help.svg',    label: '帮助与反馈', action: 'help' },
+  { icon: '/assets/icons/logout.svg',  label: '退出登录',  action: 'logout', danger: true },
 ]
 
 // ── 像素网格计算 ──────────────────────────────────────────────────────────────
