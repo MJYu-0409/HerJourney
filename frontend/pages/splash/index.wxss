@@ -4,89 +4,77 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 160rpx 60rpx 100rpx;
-  background: var(--bg-primary);
+  padding: 380rpx 60rpx 180rpx;
+  background: linear-gradient(180deg, #F8F7FA 0%, #F0EDF5 50%, #EBE6F2 100%);
   overflow: hidden;
 }
 
-/* 柔和背景光晕 */
+/* 极弱的环境光晕，只做氛围不做主角 */
 .glow {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80rpx);
-  opacity: 0.45;
+  filter: blur(140rpx);
+  opacity: 0.18;
   pointer-events: none;
 }
 
 .glow-1 {
-  width: 500rpx;
-  height: 500rpx;
-  background: radial-gradient(circle, #C6B4E1 0%, transparent 70%);
-  top: -80rpx;
-  right: -100rpx;
-  animation: floatGlow 6s ease-in-out infinite alternate;
+  width: 600rpx;
+  height: 600rpx;
+  background: #C6B4E1;
+  top: -120rpx;
+  right: -180rpx;
 }
 
 .glow-2 {
-  width: 400rpx;
-  height: 400rpx;
-  background: radial-gradient(circle, #E7C8D5 0%, transparent 70%);
-  bottom: 160rpx;
-  left: -80rpx;
-  animation: floatGlow 8s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes floatGlow {
-  from { transform: translateY(0rpx) scale(1); }
-  to   { transform: translateY(30rpx) scale(1.08); }
+  width: 500rpx;
+  height: 500rpx;
+  background: #D8C4D8;
+  bottom: 280rpx;
+  left: -160rpx;
 }
 
 /* Logo */
 .brand {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 24rpx;
+  gap: 20rpx;
 }
 
 .brand-name {
-  font-size: 88rpx;
+  font-size: 80rpx;
   font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: 12rpx;
+  color: #4A4458;
+  letter-spacing: 6rpx;
 }
 
 .brand-slogan {
-  font-size: var(--font-sm);
-  color: var(--text-secondary);
-  letter-spacing: 4rpx;
+  font-size: 30rpx;
+  color: #9B94A8;
+  letter-spacing: 6rpx;
 }
 
 /* 底部 */
 .bottom {
+  margin-top: auto;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32rpx;
+  justify-content: center;
 }
 
 .enter-btn {
-  width: 100%;
+  width: 480rpx;
   height: 96rpx;
-  border-radius: var(--radius-full);
-  background: linear-gradient(135deg, #8E7AB5 0%, #A990CC 100%);
+  border-radius: 9999rpx;
+  background: #7B6CA0;
   color: #fff;
-  font-size: var(--font-base);
+  font-size: 32rpx;
   font-weight: 500;
   letter-spacing: 4rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 12rpx 32rpx rgba(142, 122, 181, 0.35);
-  active-opacity: 0.85;
+  box-shadow: 0 16rpx 40rpx rgba(123, 108, 160, 0.28);
 }
 
