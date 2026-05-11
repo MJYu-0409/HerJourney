@@ -14,6 +14,9 @@ __pycache__/
 project.private.config.json
 **/project.private.config.json
 
+# Docs (internal, not for sharing)
+docs/
+
 # Misc
 .DS_Store
 Thumbs.db

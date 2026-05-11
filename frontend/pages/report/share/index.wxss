@@ -1,0 +1,151 @@
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding: 24rpx 32rpx 0;
+}
+
+/* ── Cards ────────────────────────────────────────────────────────────────── */
+
+.section-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 24rpx;
+  padding: 32rpx;
+}
+
+.section-title {
+  font-size: var(--font-md);
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.section-hint {
+  font-size: var(--font-xs);
+  color: var(--text-hint);
+  display: block;
+  margin-bottom: 24rpx;
+}
+
+/* ── Collapsible ──────────────────────────────────────────────────────────── */
+
+.collapse-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.collapse-header:active { opacity: 0.7; }
+
+.collapse-arrow {
+  font-size: var(--font-sm);
+  color: var(--text-hint);
+}
+
+.collapse-body {
+  margin-top: 24rpx;
+}
+
+/* ── AI badge ─────────────────────────────────────────────────────────────── */
+
+.ai-badge {
+  display: inline-block;
+  font-size: var(--font-sm);
+  font-weight: 700;
+  color: var(--color-brand);
+  background: rgba(142, 122, 181, 0.12);
+  border-radius: var(--radius-full);
+  padding: 8rpx 24rpx;
+}
+
+.ai-text {
+  font-size: var(--font-base);
+  color: var(--text-primary);
+  line-height: 1.8;
+  display: block;
+}
+
+/* ── Symptom entry rows ───────────────────────────────────────────────────── */
+
+.entry-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid rgba(142, 122, 181, 0.08);
+}
+.entry-row:last-of-type { border-bottom: none; }
+
+.entry-tag {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-brand);
+}
+
+.entry-input {
+  width: 100%;
+  min-height: 120rpx;
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 20rpx 24rpx;
+  box-sizing: border-box;
+  line-height: 1.7;
+}
+
+.entry-placeholder { color: var(--text-hint); }
+
+.entry-empty {
+  text-align: center;
+  padding: 40rpx 0;
+  font-size: var(--font-sm);
+  color: var(--text-hint);
+}
+
+/* ── Anonymous row ────────────────────────────────────────────────────────── */
+
+.anon-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.anon-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.anon-label {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.anon-hint {
+  font-size: var(--font-xs);
+  color: var(--text-hint);
+}
+
+/* ── Submit ───────────────────────────────────────────────────────────────── */
+
+.submit-wrap {
+  padding: 8rpx 0 24rpx;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #8E7AB5 0%, #B09DD0 100%);
+  border-radius: var(--radius-full);
+  padding: 32rpx;
+  text-align: center;
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: #FFFFFF;
+  box-shadow: 0 8rpx 32rpx rgba(142, 122, 181, 0.35);
+}
+.submit-btn:active { opacity: 0.85; }
+.submit-btn.submitting { opacity: 0.6; }

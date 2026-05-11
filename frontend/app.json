@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/daily/index",
     "pages/splash/index",
+    "pages/daily/index",
     "pages/chat/index",
     "pages/community/index",
     "pages/profile/index",

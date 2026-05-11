@@ -1,6 +1,6 @@
 // getApp() 不能在模块顶层调用（App 尚未初始化）
 // 改为在每次请求时懒获取
-const BASE_URL = 'http://127.0.0.1:5000'
+const BASE_URL = 'http://10.0.22.184:5000'
 const MOCK_USER_ID = 'mock-user-001'
 
 export const BASE = BASE_URL

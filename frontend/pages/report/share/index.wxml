@@ -1,0 +1,72 @@
+<scroll-view class="page" scroll-y enhanced bounces>
+
+  <!-- ── 症状趋势（折叠） ──────────────────────────────────────── -->
+  <view class="section-card">
+    <view class="collapse-header" bindtap="toggleChart">
+      <text class="section-title">症状趋势</text>
+      <text class="collapse-arrow">{{showChart ? '∧' : '∨'}}</text>
+    </view>
+    <view wx:if="{{showChart}}" class="collapse-body">
+      <line-chart series="{{chartSeries}}" />
+    </view>
+  </view>
+
+  <!-- ── AI 发现（折叠） ───────────────────────────────────────── -->
+  <view class="section-card">
+    <view class="collapse-header" bindtap="toggleAI">
+      <view class="ai-badge">AI 发现</view>
+      <text class="collapse-arrow">{{showAI ? '∧' : '∨'}}</text>
+    </view>
+    <view wx:if="{{showAI}}" class="collapse-body">
+      <text class="ai-text" user-select>{{interpretation || '暂无 AI 解读'}}</text>
+    </view>
+  </view>
+
+  <!-- ── 编辑框 ─────────────────────────────────────────────────── -->
+  <view class="section-card">
+    <text class="section-title">记录感受</text>
+    <text class="section-hint">点击每个症状后填写你的感受</text>
+
+    <view
+      wx:for="{{symptomEntries}}"
+      wx:key="key"
+      class="entry-row"
+    >
+      <text class="entry-tag">【{{item.name}}】</text>
+      <textarea
+        class="entry-input"
+        placeholder="写下你的感受…"
+        placeholder-class="entry-placeholder"
+        value="{{item.text}}"
+        bindinput="onSymptomInput"
+        data-idx="{{index}}"
+        auto-height
+        maxlength="200"
+      />
+    </view>
+
+    <view wx:if="{{!symptomEntries.length}}" class="entry-empty">
+      <text>请先在旅程页选择症状再分享</text>
+    </view>
+  </view>
+
+  <!-- ── 匿名选项 ───────────────────────────────────────────────── -->
+  <view class="section-card anon-row">
+    <view class="anon-left">
+      <text class="anon-label">匿名分享</text>
+      <text class="anon-hint">开启后不显示昵称</text>
+    </view>
+    <switch checked="{{isAnonymous}}" bindchange="toggleAnonymous" color="#8E7AB5" />
+  </view>
+
+  <!-- ── 分享按钮 ───────────────────────────────────────────────── -->
+  <view class="submit-wrap">
+    <view class="submit-btn {{submitting ? 'submitting' : ''}}" bindtap="onShare">
+      <text wx:if="{{!submitting}}">分享到社区</text>
+      <text wx:if="{{submitting}}">分享中…</text>
+    </view>
+  </view>
+
+  <view style="height:40rpx" />
+
+</scroll-view>
